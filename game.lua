@@ -25,6 +25,12 @@ playerCount = 1
 --- How many milliseconds have passed since Lua started running. Read-only.
 elapsedMS = 0
 
+--- A server-synced random seed. In level editor / offline, this seed is created by the client.
+seed = 0
+
+--- A lua table that can be read from and written to freely, but the field itself cannot be overwritten.
+_METADATA = {}
+
 --- The event handler for game init. A drawing lock may be obtained from this event.
 ---
 --- The drawing lock will prevent drawing completion until all existing drawing locks are disposed of.
@@ -69,6 +75,14 @@ gameEvent = nil
 ----     -- Do something here
 ---- end)
 playerRemoved = nil
+
+--- Returns a new lua-side RNG object (tolua not needed), seeded by the given seed, or a generated client seed is none is given.
+--- @tparam int seed Seed for the RNG object.
+--- @return Returns a new RNG object.
+--- @usage local rng = game.newRNG(51832591)
+--- @see RNG
+function newRNG(seed)
+end
 
 --- Gets a player object by their index.
 --- 
