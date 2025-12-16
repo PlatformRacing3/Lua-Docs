@@ -17,6 +17,12 @@ interval = 0
 --- (e.g. a multiplier of 2 makes an interval of 100 milliseconds take only 50 milliseconds to complete)
 speed = 1
 
+--- True if the timer has completed all of its intervals, false otherwise. Read-only. 
+stopped = false
+
+--- Whether the timer destroys itself upon completing all of its intervals. By default faulse.
+persistent = false
+
 --- Whether or not the timer was destroyed. Calling `destroy` sets this to true. Read-only.
 destroyed = false
 
