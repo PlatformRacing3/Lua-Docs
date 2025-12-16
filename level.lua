@@ -72,10 +72,12 @@ end
 --- Creates a new raster-graphics `stamp`, which can be drawn to via Lua, and be applied to `artlayer`s and other `stamp`s. This function fails and returns nil if the player has backgrounds disabled in their settings or if the given width and/or height were invalid.
 --- 
 --- "Raster graphics" refers to pixel data. Stamps are used for directly storing and manipulating pixel data before drawing to an `artlayer`, rather than performing the more artsy operations you'd find on a `sprite`.
---- 
+--- Stamps are also used for certain sorts of effects that don't map well to vector graphics, such as perlin noise.
+---
 --- An example use case is to draw some pixel data and then draw it to an art layer with some translation, scaling, and/or rotation applied. Another example use case would be to draw the same pixels to multiple art layers. Instead of repeating the same draw operations for each layer, you can perform the operations to one stamp, and then draw the stamp to each layer.
---- @tparam int width The width of the stamp in pixels. By default 64. This value is clamped to the range of 1-512. 
---- @tparam int height The height of the stamp in pixels. By default 64. This value is clamped to the range of 1-512.  
+--- @tparam int width The width of the stamp in pixels. By default 64. This value is clamped to the range of 1-1024. 
+--- @tparam int height The height of the stamp in pixels. By default 64. This value is clamped to the range of 1-1024.  
+--- @tparam boolean smoothing Whether the stamp will be smoothed when scaled and rotated or not. By default false.
 --- @treturn stamp The new stamp, or nil if the player has backgrounds disabled in their settings.
 --- @see stamp
 --- @usage local stamp = tolua(game.level.newStamp(500, 500))
@@ -83,7 +85,7 @@ end
 ----     stamp.setRect(0, 0, 500, 500, 0xFF000000)
 ----     someLayer.drawStamp(stamp)
 ---- end
-function newStamp(width, height)
+function newStamp(width, height, smoothing)
 end
 
 --- Destroys all Lua-created stamps. Does not undraw any stamps already drawn to any existing art layers.
@@ -94,7 +96,7 @@ end
 --- 
 --- "Vector graphics" refers to artsy shape data, such as lines, circles, gradients, text, etc. The functions available to a sprite are very similar to drawing tools you'd find in an art program or in the Level Editor / Block Editor. This contrasts to the raw data-driven manipulations available for a `stamp`.
 --- 
---- A sprite may also be set as the "parent" of other sprites or stamps, meaning that they will also be rendered whenever the sprite is rendered to an art layer, and with the same transformations as the sprite.
+--- A sprite may also be set as the "parent" of other display objects, meaning that they will also be rendered whenever the sprite is rendered to an art layer, and with the same transformations as the sprite.
 --- @treturn sprite The new sprite, or nil if the player has backgrounds disabled in their settings.
 --- @see sprite
 --- @usage local sprite = tolua(game.level.newSprite())
@@ -109,4 +111,22 @@ end
 
 --- Destroys all Lua-created sprites. Does not undraw any sprites already rendered to any existing art layers or stamps.
 function destroyAllSprites()
+end
+
+--- Creates a new text field, which can contain text, and be applied to `artlayer`s and `stamps`. This function fails and returns nil if the player has backgrounds disabled in their settings.
+---
+--- An example use case is for dynamic text: a text field can be added as a child of a sprite with background, and then drawn as part of a UI or such.
+--- @tparam string text The text that the text field starts out with.
+--- @tparam int size The size of the text in the text field.
+--- @tparam int color The color of the text in the text field.
+--- @param vars An AS3 object containing other variables to provide to the text field, see the text field page for reference.
+--- @treturn textfield The new text field, or nil if the player has backgrounds disabled in their settings.
+--- @see textfield
+--- @usage local textField = tolua(game.level.newTextField("Awesome Text", 24, 0x80FFCC))
+---- someLayer.drawTextField(text)
+function newTextField(text, size, color, vars)
+end
+
+--- Destroys all Lua-created text fields. Does not undraw any text fields already rendered to any existing art layers or stamps.
+function destroyAllTextFields()
 end
