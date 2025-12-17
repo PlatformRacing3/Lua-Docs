@@ -11,7 +11,7 @@ layerNum = 1
 --- The alpha of the art layer, represented by a number in the range of 0 - 1. An alpha of 0 means the layer is completely transparent; 1 means fully visible. By default 1.
 alpha = 1
 
---- The blend mode of the art layer. Use @{utils.BlendMode|BlendMode} enum values. By default @{utils.BlendMode.NORMAL|BlendMode.NORMAL}.
+--- The blend mode of the art layer. Use @{utils.BlendMode|BlendMode} enum values. By default `BlendMode.NORMAL`.
 --- Not all blend modes are guaranteed to have any effect when used by art layers
 --- @see utils.BlendMode
 blendMode = "normal"

@@ -68,7 +68,7 @@ size = 14
 --- RGB color of the text.
 color = 0xFFFFFF
 
---- Text alignment mode. Use @{utils.TextFormatAlign|TextFormatAlign} enum values. By default @{utils.TextFormatAlign.LEFT|TextFormatAlign.LEFT}.
+--- Text alignment mode. Use @{utils.TextFormatAlign|TextFormatAlign} enum values. By default `TextFormatAlign.LEFT`.
 --- @see utils.TextFormatAlign
 align = "left"
 
@@ -78,7 +78,7 @@ wordWrap = true
 --- Whether the text is underlined or not. By default false.
 underline = false
 
---- Text auto-sizing mode. Use @{utils.TextFieldAutoSize|TextFieldAutoSize} enum values. By default @{utils.TextFieldAutoSize.NONE|TextFieldAutoSize.NONE}.
+--- Text auto-sizing mode. Use @{utils.TextFieldAutoSize|TextFieldAutoSize} enum values. By default `TextFieldAutoSize.NONE`.
 --- @see utils.TextFieldAutoSize
 autoSize = "none"
 

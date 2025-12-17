@@ -46,7 +46,7 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the sprite. Use @{utils.BlendMode|BlendMode} enum values. By default @{utils.BlendMode.NORMAL|BlendMode.NORMAL}.
+--- The blend mode of the sprite. Use @{utils.BlendMode|BlendMode} enum values. By default `BlendMode.NORMAL`.
 --- @see utils.BlendMode
 blendMode = "normal"
 
@@ -183,9 +183,9 @@ end
 ----     
 ----     + !horizontal: Do not scale the line thickness if the sprite is scaled only horizontally and not vertically.
 ---- 
----- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. Use @{utils.CapsStyle|CapsStyle} enum values. By default @{utils.CapsStyle.ROUND|CapsStyle.ROUND}.
+---- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. Use @{utils.CapsStyle|CapsStyle} enum values. By default `CapsStyle.ROUND`.
 ---- 
----- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. Use @{utils.JointStyle|JointStyle} enum values. By default @{utils.JointStyle.ROUND|JointStyle.ROUND}. When using JointStyle.MITER, the length of miters is limited by the `miterLimit` parameter.
+---- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. Use @{utils.JointStyle|JointStyle} enum values. By default `JointStyle.ROUND`. When using JointStyle.MITER, the length of miters is limited by the `miterLimit` parameter.
 ---- 
 ---- * !miterLimit: (***int***) The maximum length, in pixels, of mitered joints used for the angles formed by lines drawn with this line style. By default 3. This value is clamped between 1 and 255.
 --- @see utils.CapsStyle
