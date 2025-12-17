@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.1
       - name: Isolate LDoc source
         run: |
             mkdir "${{ runner.temp }}/source/"
@@ -37,11 +37,11 @@ jobs:
         if: ${{ inputs.deploy_page }} 
         uses: actions/configure-pages@v5
       - name: Setup Lua
-        uses: leafo/gh-actions-lua@v10
+        uses: leafo/gh-actions-lua@v12
         with:
           luaVersion: 5.1
       - name: Install LuaRocks
-        uses: leafo/gh-actions-luarocks@v4.3.0
+        uses: leafo/gh-actions-luarocks@v6
       - name: Install Dependencies
         run: |
             luarocks install luafilesystem
@@ -50,7 +50,7 @@ jobs:
       - name: Run LDoc
         run: ldoc "${{ runner.temp }}/source/" --template "${{ runner.temp }}/source/" --format="markdown" -d "${{ runner.temp }}/LDOC"
       - name: Upload Artifact (ZIP)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
             name: 'LDOC_zip'
             path: "${{ runner.temp }}/LDOC"
@@ -69,7 +69,7 @@ jobs:
               --force-local \
               "."
       - name: Upload Artifact (TAR)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: 'LDOC_tar'
           path: "${{ runner.temp }}/LDOC_tar.tar"
