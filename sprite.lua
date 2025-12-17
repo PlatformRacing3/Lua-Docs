@@ -60,11 +60,13 @@ destroyed = false
 numChildren = 0
 
 --- Returns the bounds of the sprite as a Rectangle, relative to itself.
+---
 --- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
 function getBounds()
 end
 
 --- Returns the bounds of the sprite as a Rectangle, relative to itself, excluding any strokes on shapes.
+---
 --- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
 function getRect()
 end
