@@ -65,11 +65,13 @@ blendMode = "normal"
 destroyed = false
 
 --- Returns the bounds of the stamp as a Rectangle, relative to itself.
+---
 --- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
 function getBounds()
 end
 
 --- Returns the bounds of the stamp as a Rectangle, relative to itself, excluding any strokes on shapes.
+---
 --- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
 function getRect()
 end
