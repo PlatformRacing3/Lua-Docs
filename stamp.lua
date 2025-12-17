@@ -173,8 +173,8 @@ end
 --- @tparam int channelOptions An integer indication for which color channels to put noise in.
 --- @tparam boolean grayScale Whether the noise is grayscale or not. False by default.
 --- @param offsetsArray An AS3 array of numbers to use as the offsets, formatted as {x1, y1, x2, y2, ..., xn, yn}
---- @usage someStamp.perlinNoise -- Generates randomly colored noise
-function perlinNoise(baseX, baseY, numOctaves, randomSeed, stitch, fractalNoise, channelOptions, grayScale, offsetsArray)
+--- @usage someStamp.perlinNoise(120,120,3,math.random(0x7FFFFFFF),false,true,7,true,toarray{12,12,32,-12,-16,16}) -- Generates grayscale perlin noise.
+function perlinNoise(...)
 end
 
 --- Scrolls the contents of the stamp.
