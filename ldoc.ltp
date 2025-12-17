@@ -102,7 +102,8 @@
 #  local modSortTable = {}
 #  for mod in mods() do modSortTable[#modSortTable + 1] = mod end
 #  sort(modSortTable, function(a,b) return display_name(a):lower() < display_name(b):lower() end)
-#   for _,mod in ipairs(modSortTable) do
+#   for i = 1,#modSortTable do
+#    local mod = modSortTable[i]
 #    local name = display_name(mod)
 #   if mod.name == this_mod then
   <li><strong>$(name)</strong></li>
