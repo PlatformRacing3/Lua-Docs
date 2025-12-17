@@ -75,7 +75,13 @@
 # for kind, items in module.kinds() do
 <h2>$(kind)</h2>
 <ul class="nowrap">
+# local itemSortTable = {}
 # for item in items() do
+#   itemSortTable[#itemSortTable] = item
+# end
+# table.sort(itemSortTable,function(a,b) return a:lower() < b:lower() end)
+# for i = 1, #itemSortTable do
+#   local item = itemSortTable[i]
     <li><a href="#$(item.name)">$(display_name(item))</a></li>
 # end
 </ul>
