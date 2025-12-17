@@ -22,8 +22,14 @@ playersCount = 1
 --- @see getPlayer
 playerCount = 1
 
---- How many milliseconds have passed since Lua started running. Read-only.
+--- How many ticks have passed since the game started. Read-only.
+elapsedTicks = 0
+
+--- How many milliseconds (in simulated game time) have passed since the game started. Read-only.
 elapsedMS = 0
+
+--- How many milliseconds (in real time / wall clock time) have passed since Lua started running. Read-only.
+elapsedRealMS = 0
 
 --- A server-synced random seed. In level editor / offline, this seed is created by the client.
 seed = 0
@@ -114,9 +120,9 @@ end
 function getAllPlayers()
 end
 
---- Returns a game timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
+--- Returns a game timer which calls `listener` every `interval` milliseconds (in simulated game time) up to `maxCount` times.
 --- 
---- Unlike `player.newTimer` and other tick handlers, these timers can run before the game has finished initializing and after the player is dead.
+--- Timers created with this method will not run before the game has finished initializing or after the player is dead.
 --- 
 --- The timer cannot be triggered on the same tick it is created, nor can it be triggered mid-tick by changing its properties.
 --- @tparam number interval How many milliseconds must pass to complete an interval.
@@ -124,14 +130,35 @@ end
 --- @tparam function listener The listener to be called every time an iteration is completed.
 --- @treturn timer The created timer object.
 --- @see timer
---- @usage alienSpawnTimer = game.newTimer(1000 * 10, 9999999, function()
-----     -- Spawns a new alien every 10 seconds
-----     game.level.newAlien(1, os.time(), toobject{})
+--- @usage alienSpawnTimer = game.newTimer(1000 * 10, -1, function()
+----     -- Spawns a new alien every 10 seconds (in simulated game time)
+----     game.level.newAlien(1, tolua(game.elapsedMS), toobject{})
 ---- end)
 function newTimer(interval, maxCount, listener)
 end
 
---- Destroys all game timers created by `newTimer`.
+--- Returns a game timer which calls `listener` every `interval` milliseconds (in real time / wall clock time) up to `maxCount` times.
+--- 
+--- Unlike other timers and tick handlers, timers created with this method will run even if the game has not finished initializing yet or if the player is dead.
+--- 
+--- The timer cannot be triggered on the same tick it is created, nor can it be triggered mid-tick by changing its properties.
+--- @tparam number interval How many milliseconds must pass to complete an interval.
+--- @tparam int maxCount How many intervals will be completed. Set to -1 for infinite intervals.
+--- @tparam function listener The listener to be called every time an iteration is completed.
+--- @treturn timer The created timer object.
+--- @see timer
+--- @usage playerDiedTimer = game.newRealTimer(100, -1, function()
+----     if (not player) or (tolua(player.health) > 0) then
+----         return
+----     end
+----     
+----     player.chat("You died around " .. (tolua(playerDiedTimer.elapsedMS) / 1000) .. " seconds after the timer started!")
+----     playerDiedTimer.destroy()
+---- end)
+function newRealTimer(interval, maxCount, listener)
+end
+
+--- Destroys all game timers created by `newTimer` or `newRealTimer`.
 --- @see timer
 function destroyAllTimers()
 end

@@ -88,6 +88,13 @@ end
 function vanish(time, vanishduration)
 end
 
+--- Freezes the block for some number of ticks. The position of a block can be passed to replace the default ice block.
+--- @tparam int time The amount of time, in ticks, for which the block will be frozen. By default 50.
+--- @tparam int xpos The x-position of the target block that will replace the default ice block. If omitted, the default ice block will be used.
+--- @tparam int ypos The y-position of the target block that will replace the default ice block. If omitted, the default ice block will be used.
+function freeze(time, xpos, ypos)
+end
+
 --- Makes the block explode, damaging the player in the process.
 --- @tparam int damage The amount of damage done to the player. By default 1.
 --- @tparam number vel The strength of the impact that pushes the player. By default 0.3.

@@ -187,23 +187,41 @@ end
 function getmetadata(key, defaultValue)
 end
 
---- Returns a player timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
+--- Returns a player timer which calls `listener` every `interval` milliseconds (in simulated game time) up to `maxCount` times.
 ---
---- Unlike `game.newTimer`, these timers are only called after the game is started and while the player is alive.
+--- Timers created with this method will not run before the game has finished initializing or after the player is dead.
 ---
 --- The timer cannot be triggered on the same tick it is created, nor can it be triggered mid-tick by changing its properties.
 --- @tparam number interval How many milliseconds must pass to complete an interval.
 --- @tparam int maxCount How many intervals will be completed. Set to -1 for infinite intervals.
 --- @tparam function listener The listener to be called every time an iteration is completed.
 --- @treturn timer The created timer object.
---- @usage healthRegenTimer = player.newTimer(1000 * 6, 9999999, function()
-----   -- Heals 1 health every 6 seconds
+--- @usage healthRegenTimer = player.newTimer(1000 * 6, -1, function()
+----   -- Heals 1 health every 6 seconds (in simulated game time)
 ----   player.health = tolua(player.health) + 1
 ---- end)
 function newTimer(interval, maxCount, listener)
 end
 
---- Destroys all player timers created by `newTimer`.
+--- Returns a player timer which calls `listener` every `interval` milliseconds (in real time / wall clock time) up to `maxCount` times.
+---
+--- Timers created with this method will not run before the game has finished initializing or after the player is dead.
+---
+--- The timer cannot be triggered on the same tick it is created, nor can it be triggered mid-tick by changing its properties.
+--- @tparam number interval How many milliseconds must pass to complete an interval.
+--- @tparam int maxCount How many intervals will be completed. Set to -1 for infinite intervals.
+--- @tparam function listener The listener to be called every time an iteration is completed.
+--- @treturn timer The created timer object.
+--- @usage startElapsedTicks = tolua(game.elapsedTicks)
+---- tpsCountTimer = player.newRealTimer(1000 * 6, -1, function()
+----   -- Reports average ticks per second over a 6 second interval
+----   player.chat(tostring((tolua(game.elapsedTicks) - startElapsedTicks) / 6))
+----   startElapsedTicks = tolua(game.elapsedTicks)
+---- end)
+function newRealTimer(interval, maxCount, listener)
+end
+
+--- Destroys all player timers created by `newTimer` and `newRealTimer`.
 --- @see timer
 function destroyAllTimers()
 end
@@ -557,6 +575,8 @@ end
 --- * !reload: (***float***) the delay in milliseconds after using the item before it can be used again. *[ Default 500｜Min 0｜Max 9999999 ]*
 --- 
 --- * !sap: (***int***) the amount of health to heal the player by upon damaging an enemy. *[ Default 0｜Min -9999｜Max 99999 ]*
+--- 
+--- * !slashes: (***int***) the amount of sword slashes created by each use of the item. *[ Default 1｜Min 0｜Max 99999 ]*
 --- 
 --- * !stamprot: (***float***) the rotation of the item graphic. Visual only. *[ Default 0｜Min -360｜Max 360 ]. Displayed as **rotation** under stamp settings in block editor*
 --- 

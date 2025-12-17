@@ -16,7 +16,7 @@ end
 ----   run_once = player.tick.addListener(function()
 ----      player.alert("This listener will only run once.")
 ----      player.tick.removeListener(run_once)
-----   end
+----   end)
 ----   
 ----end)
 function removeListener(as3_listener)

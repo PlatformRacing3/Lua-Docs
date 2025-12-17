@@ -26,6 +26,10 @@ persistent = false
 --- Whether or not the timer was destroyed. Calling `destroy` sets this to true. Read-only.
 destroyed = false
 
+--- Whether or not the timer uses simulated game time rather than real time / wall clock time.
+--- This will be `true` if created by `game.newTimer` or `player.newTimer`, or `false` if created by `game.newRealTimer` or `player.newRealTimer`
+usesGameTime = true
+
 --- Resets the timer's interval count and length back to 0, and its speed back to 1.
 function reset()
 end
