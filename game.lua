@@ -115,7 +115,7 @@ end
 ---- for i, v in pairs(players) do
 ----     v.setmetadata("index", i)
 ---- end
---- @see utils.totable
+--- @see @{utils.tovararg|tovararg}
 --- @see remoteplayer
 function getAllPlayers()
 end

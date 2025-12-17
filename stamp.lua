@@ -56,8 +56,8 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the stamp. Use `BlendMode` enum values. By default `BlendMode.NORMAL`.
---- @see BlendMode
+--- The blend mode of the stamp. Use @{utils.BlendMode|BlendMode} enum values. By default @{utils.BlendMode.NORMAL|BlendMode.NORMAL}.
+--- @see @{utils.BlendMode|BlendMode}
 blendMode = "normal"
 
 --- Whether or not the stamp was destroyed. Calling `destroy` sets this to true. Read-only.

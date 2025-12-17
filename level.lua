@@ -22,7 +22,7 @@ end
 
 --- Gets a list of all blocks existing in the level.
 --- @return An AS3 array of all blocks in the level.
---- @see utils.totable
+--- @see @{utils.totable|totable}
 --- @usage local blocks = totable(game.level.getAllBlocks()) 
 ---- for i, v in pairs(blocks) do
 ----     v.setmetatable("index", i)
