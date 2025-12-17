@@ -43,7 +43,7 @@
 #   local i = 2
 #   while i < #t do
 #     local j = i;
-#     while j > 1 and comp(t[j-1],t[j] do
+#     while j > 1 and comp(t[j-1],t[j]) do
 #       t[j-1], t[j] = t[j], t[j-1]
 #       j = j - 1
 #     end
