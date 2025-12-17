@@ -56,23 +56,20 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the stamp. By default "normal".
---- Valid blend modes are defined here:
---- <https://airsdk.dev/reference/actionscript/3.0/flash/display/BlendMode.html>
+--- The blend mode of the stamp. Use BlendMode enum values. By default BlendMode.NORMAL.
+--- @see BlendMode
 blendMode = "normal"
 
 --- Whether or not the stamp was destroyed. Calling `destroy` sets this to true. Read-only.
 destroyed = false
 
 --- Returns the bounds of the stamp as a Rectangle, relative to itself.
----
---- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
+--- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the stamp
 function getBounds()
 end
 
 --- Returns the bounds of the stamp as a Rectangle, relative to itself, excluding any strokes on shapes.
----
---- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
+--- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the stamp
 function getRect()
 end
 

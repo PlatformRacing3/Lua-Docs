@@ -23,7 +23,7 @@ playersCount = 1
 playerCount = 1
 
 --- How many ticks have passed since the game started. Read-only.
-elapsedTicks = 0
+--- Returns a game timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
 
 --- How many milliseconds (in simulated game time) have passed since the game started. Read-only.
 elapsedMS = 0
@@ -87,8 +87,8 @@ gameEvent = nil
 playerRemoved = nil
 
 --- Returns a new lua-side RNG object (tolua not needed), seeded by the given seed, or a generated client seed is none is given.
---- @tparam int seed Seed for the RNG object.
---- @return Returns a new RNG object.
+--- int seed (optional) An optional number input to set the seed with. If none is given, a client-generated seed is used.
+--- @treturn RNG The new RNG object.
 --- @usage local rng = game.newRNG(51832591)
 --- @see RNG
 function newRNG(seed)

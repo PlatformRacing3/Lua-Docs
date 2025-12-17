@@ -46,9 +46,8 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the sprite. By default "normal".
---- Valid blend modes are defined here:
---- <https://airsdk.dev/reference/actionscript/3.0/flash/display/BlendMode.html>
+--- The blend mode of the sprite. Use BlendMode enum values. By default BlendMode.NORMAL.
+--- @see BlendMode
 blendMode = "normal"
 
 --- Whether or not the sprite was destroyed. Calling `destroy` sets this to true. Read-only.
@@ -60,14 +59,12 @@ destroyed = false
 numChildren = 0
 
 --- Returns the bounds of the sprite as a Rectangle, relative to itself.
----
---- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
+--- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the sprite
 function getBounds()
 end
 
 --- Returns the bounds of the sprite as a Rectangle, relative to itself, excluding any strokes on shapes.
----
---- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
+--- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the sprite
 function getRect()
 end
 
@@ -94,7 +91,7 @@ end
 --- @param ratios An AS3 array of the color distribution ratios; valid values are 0-255. These values define the percentages of the width where the respective color is sampled at 100%. The value 0 represents the left position in the gradient box, and 255 represents the right position in the gradient box. Each value must be greater than the last.
 --- @param vars An AS3 object containing any optional parameters for the gradient fill. Valid options are:
 ---- 
----- * !type: (***string***) The type of gradient fill. Can be either "linear" or "radial". By default "linear".
+---- * !type: (***string***) The type of gradient fill. Use GradientType.LINEAR or GradientType.RADIAL. By default GradientType.LINEAR.
 ---- 
 ---- * !width: (***number***) The width of the gradient box. By default 127.
 ---- 
@@ -108,14 +105,17 @@ end
 ---- 
 ---- * !focalPointRatio: (***number***) A multiplier that controls the location of the focal point of the gradient. 0 means that the focal point is in the center. 1 means that the focal point is at one border of the gradient circle. -1 means that the focal point is at the other border of the gradient circle. A value less than -1 or greater than 1 is clamped to -1 or 1
 ---- 
----- * !spreadMethod: (***string***) Which spread method to use. Can be either "pad", "reflect", or "repeat". By default "pad".
+---- * !spreadMethod: (***string***) Which spread method to use. Use GradientSpreadMethod.PAD, GradientSpreadMethod.REFLECT, or GradientSpreadMethod.REPEAT. By default GradientSpreadMethod.PAD.
 ---- 
----- * !interpolationMethod: (***string***) Which color space interpolation method to use. Can be either "rgb" or "linearRGB". By default "rgb".
+---- * !interpolationMethod: (***string***) Which color space interpolation method to use. Use ColorInterpolationMethod.RGB or ColorInterpolationMethod.LINEAR_RGB. By default ColorInterpolationMethod.RGB.
 ---- 
 --- @see endFill
+--- @see GradientType
+--- @see GradientSpreadMethod
+--- @see ColorInterpolationMethod
 --- @usage local colors = toarray{0xFF0000FF, 0xFFFFFFFF} -- The gradient will be blue on the left and white on the right
 ---- local ratios = toarray{0.3 * 255, 1 * 255} -- The gradient will be fully blue up to 30% of the way through the fill, then transition from blue to white across the remaining 70%
----- someSprite.beginGradientFill(colors, ratios, toobject{width = 100, height = 200}) -- The width and height of the gradient box will now match that of our next draw call.
+---- someSprite.beginGradientFill(colors, ratios, toobject{type = GradientType.LINEAR, width = 100, height = 200}) -- The width and height of the gradient box will now match that of our next draw call.
 ---- someSprite.drawRect(0, 0, 100, 200)
 ---- someSprite.endFill()
 ---- someLayer.drawSprite(someSprite)
@@ -183,23 +183,13 @@ end
 ----     
 ----     + !horizontal: Do not scale the line thickness if the sprite is scaled only horizontally and not vertically.
 ---- 
----- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. By default "round". Valid options are:
-----     
-----     + !round: Draw round caps at the end of lines.
-----     
-----     + !square: Draw square caps at the end of lines.
-----     
-----     + !none: Do not draw caps at the end of lines. 
+---- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. Use CapsStyle enum values. By default CapsStyle.ROUND.
 ---- 
----- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. By default "round". Valid options are:
-----     
-----     + !round: Draw round joints at the angles formed by lines.
-----     
-----     + !bevel: Draw beveled joints at the angles formed by lines.
-----     
-----     + !miter: Draw mitered joints at the angles formed by lines. The length of these miters is limited by the `miterLimit` parameter.
+---- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. Use JointStyle enum values. By default JointStyle.ROUND. When using JointStyle.MITER, the length of miters is limited by the `miterLimit` parameter.
 ---- 
 ---- * !miterLimit: (***int***) The maximum length, in pixels, of mitered joints used for the angles formed by lines drawn with this line style. By default 3. This value is clamped between 1 and 255.
+--- @see CapsStyle
+--- @see JointStyle
 --- @usage someSprite.lineStyle(0xFFFF0000, 5) -- Draw a solid red line with a thickness of 5 pixels
 ---- someSprite.lineTo(000, 100) -- Draw the line from (0, 0) to (0, 100)
 ---- someSprite.lineStyle(0xFF000000, 1) -- Draw a solid black line with a thickness of 1 pixel
@@ -219,7 +209,7 @@ end
 --- @param ratios An AS3 array of the color distribution ratios; valid values are 0-255. These values define the percentages of the width where the respective color is sampled at 100%. The value 0 represents the left position in the gradient box, and 255 represents the right position in the gradient box. Each value must be greater than the last.
 --- @param vars An AS3 object containing any optional parameters for the gradient fill. Valid options are:
 ---- 
----- * !type: (***string***) The type of gradient fill. Can be either "linear" or "radial". By default "linear".
+---- * !type: (***string***) The type of gradient fill. Use GradientType.LINEAR or GradientType.RADIAL. By default GradientType.LINEAR.
 ---- 
 ---- * !width: (***number***) The width of the gradient box. By default 127.
 ---- 
@@ -233,11 +223,14 @@ end
 ---- 
 ---- * !focalPointRatio: (***number***) A multiplier that controls the location of the focal point of the gradient. 0 means that the focal point is in the center. 1 means that the focal point is at one border of the gradient circle. -1 means that the focal point is at the other border of the gradient circle. A value less than -1 or greater than 1 is clamped to -1 or 1
 ---- 
----- * !spreadMethod: (***string***) Which spread method to use. Can be either "pad", "reflect", or "repeat". By default "pad".
+---- * !spreadMethod: (***string***) Which spread method to use. Use GradientSpreadMethod.PAD, GradientSpreadMethod.REFLECT, or GradientSpreadMethod.REPEAT. By default GradientSpreadMethod.PAD.
 ---- 
----- * !interpolationMethod: (***string***) Which color space interpolation method to use. Can be either "rgb" or "linearRGB". By default "rgb".
+---- * !interpolationMethod: (***string***) Which color space interpolation method to use. Use ColorInterpolationMethod.RGB or ColorInterpolationMethod.LINEAR_RGB. By default ColorInterpolationMethod.RGB.
 ---- 
 --- @see endFill
+--- @see GradientType
+--- @see GradientSpreadMethod
+--- @see ColorInterpolationMethod
 --- @usage local colors = toarray{0xFF0000FF, 0xFFFFFFFF} -- The gradient will be blue on the left and white on the right
 ---- local ratios = toarray{0.3 * 255, 1 * 255} -- The gradient will be fully blue up to 30% of the way through the fill, then transition from blue to white across the remaining 70%
 ---- someSprite.lineStyle(0,24)
@@ -338,8 +331,9 @@ end
 ---
 --- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Graphics.html#drawPath()>
 --- @tparam string commands A string containing all of the commands for the path, e.g "M 100 100 L 250.5 -130.221 L 300 300 L 100 100". A command string can be built with the GraphicsPathCommand helper.
---- @tparam string winding A string defining the winding for the path. "evenOdd" by default.
+--- @tparam string winding A string defining the winding for the path. Use GraphicsPathWinding.EVEN_ODD or GraphicsPathWinding.NON_ZERO. By default GraphicsPathWinding.EVEN_ODD.
 --- @see GraphicsPathCommand
+--- @see GraphicsPathWinding
 --- @usage local path = GraphicsPathCommand.new().moveTo(100,100).lineTo(250.5,-130.221).lineTo(300,300).lineTo(100,100).toString()
 ---- someSprite.drawPath(path, GraphicsPathWinding.NON_ZERO)
 function drawPath(commands, winding)
@@ -404,19 +398,7 @@ end
 --- @tparam int size The size, in pixels, of the text field. By default 14.
 --- @param vars An AS3 object containing any optional parameters for the gradient fill. Valid options are:
 ---- 
----- * !align: (***string***) The alignment of the text field. By default "left". Valid options are:
-----     
-----     + !left: Aligns the text to the left edge of the text field.
-----     
-----     + !right: Aligns the text to the right edge of the text field.
-----     
-----     + !center: Centers the text within the text field.
-----     
-----     + !justify: Justifies the text within the text field. The spacing between words is adjusted line-by-line to ensure each line is the same length.
-----     
-----     + !start: Aligns the text to the starting edge of the text field, as determined by the text language. Usually the same as "left".
-----     
-----     + !end: Aligns the text to the ending edge of the text field, as determined by the text language. Usually the same as "right".
+---- * !align: (***string***) The alignment of the text field. Use TextFormatAlign values (LEFT, RIGHT, CENTER, JUSTIFY, START, END). By default TextFormatAlign.LEFT.
 ---- 
 ---- * !bold: (***bool***) Whether or not the text should be emboldened. By default false.
 ---- 
@@ -432,7 +414,8 @@ end
 ---- 
 ---- * !wordWrap: (***bool***) Whether or not the text should be word wrapped within the text field's size. By default false.
 ---- 
---- @usage someSprite.addText(string.rep("Hello, world! ", 30), 0, 0, 0xFFFFAA00, 14, toobject{bold = true, wordWrap = true, width = 150}) -- Creates orange text at (0, 0), word-wrapping with a width of 150 pixels.
+--- @see TextFormatAlign
+--- @usage someSprite.addText(string.rep("Hello, world! ", 30), 0, 0, 0xFFFFAA00, 14, toobject{bold = true, wordWrap = true, width = 150, align = TextFormatAlign.CENTER}) -- Creates orange text at (0, 0), word-wrapping with a width of 150 pixels.
 function addText(text, x, y, color, size, vars)
 end
 

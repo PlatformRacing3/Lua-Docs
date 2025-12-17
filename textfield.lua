@@ -46,9 +46,8 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the text field. By default "normal".
---- Valid blend modes are defined here:
---- <https://airsdk.dev/reference/actionscript/3.0/flash/display/BlendMode.html>
+--- The blend mode of the text field. Use BlendMode enum values. By default BlendMode.NORMAL.
+--- @see BlendMode
 blendMode = "normal"
 
 --- Whether or not the text field was destroyed. Calling `destroy` sets this to true. Read-only.
@@ -69,7 +68,8 @@ size = 14
 --- RGB color of the text.
 color = 0xFFFFFF
 
---- Text alignment mode
+--- Text alignment mode. Use TextFormatAlign enum values (LEFT, RIGHT, CENTER, JUSTIFY, START, END). By default TextFormatAlign.LEFT.
+--- @see TextFormatAlign
 align = "left"
 
 --- Whether the text automatically wraps around or not.
@@ -78,7 +78,8 @@ wordWrap = true
 --- Whether the text is underlined or not. By default false.
 underline = false
 
---- Text auto-sizing mode.
+--- Text auto-sizing mode. Use TextFieldAutoSize enum values (NONE, LEFT, RIGHT, CENTER). By default TextFieldAutoSize.NONE.
+--- @see TextFieldAutoSize
 autoSize = "none"
 
 --- Destroys the text field.
@@ -86,13 +87,11 @@ function destroy()
 end
 
 --- Returns the bounds of the text field as a Rectangle, relative to itself.
----
---- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
+--- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the text field
 function getBounds()
 end
 
 --- Returns the bounds of the text field as a Rectangle, relative to itself, excluding any strokes on shapes.
----
---- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
+--- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the text field
 function getRect()
 end

@@ -197,26 +197,35 @@ keys = {
 	LEFTBRACKET = 219, -- The left bracket key. (219)
 	BACKSLASH = 220, -- The backslash key. (220)
 	RIGHTBRACKET = 221, -- The right bracket key. (221)
-	QUOTE = 222 -- The quote key (222)
+	QUOTE = 222, -- The quote key (222)
+
+	NEXT = 34, -- [DEPRECATED] Legacy equivalent of the PAGE DOWN key. (34)
+	SEPARATOR = 108, -- [DEPRECATED] Legacy equivalent of the NUMPAD ENTER key. (108)
+	DECIMAL = 110, -- [DEPRECATED] Legacy equivalent of NUMPAD PERIOD key. (110)
+	DIVIDE = 111 -- [DEPRECATED] Legacy equivalent of NUMPAD SLASH key. (111)
 }
 
 --- GraphicsPathWinding enum.
---- @see sprite
+--- Defines the winding rule for path drawing.
+--- @see sprite.drawPath
 GraphicsPathWinding = {
 	EVEN_ODD = "evenOdd", -- Even-odd winding rule. ("evenOdd")
 	NON_ZERO = "nonZero" -- Non-zero winding rule. ("nonZero")
 }
 
 --- GradientType enum.
---- @see sprite
+--- Defines the type of gradient fill.
+--- @see sprite.beginGradientFill
+--- @see sprite.lineGradientStyle
 GradientType = {
 	LINEAR = "linear", -- Linear gradient fill. ("linear")
 	RADIAL = "radial" -- Radial gradient fill. ("radial")
 }
 
-
 --- GradientSpreadMethod enum.
---- @see sprite
+--- Defines the spread method for gradient fills.
+--- @see sprite.beginGradientFill
+--- @see sprite.lineGradientStyle
 GradientSpreadMethod = {
 	PAD = "pad", -- Pad spread method. ("pad")
 	REFLECT = "reflect", -- Reflect spread method. ("reflect")
@@ -224,23 +233,76 @@ GradientSpreadMethod = {
 }
 
 --- TextFormatAlign enum.
---- @see textfield
+--- Defines the alignment of text within a text field.
+--- @see textfield.align
+--- @see sprite.addText
 TextFormatAlign = {
-	CENTER = "center", -- Centers the text to the text field. ("center")
-	END = "end", -- Aligns text to the end edge of a line. ("end")
-	JUSTIFY = "justify", -- Justifies text within the text field. ("justify")
-	LEFT = "left", -- Aligns text to the left within the text field. ("left")
-	RIGHT = "right", -- Aligns text to the right within the text field. ("right")
-	START = "start" -- Aligns text to the start edge of a line. ("start")
+	CENTER = "center", -- Centers the text within the text field. ("center")
+	END = "end", -- Aligns the text to the ending edge of the text field, as determined by the text language. Usually the same as RIGHT. ("end")
+	JUSTIFY = "justify", -- Justifies the text within the text field. The spacing between words is adjusted line-by-line to ensure each line is the same length. ("justify")
+	LEFT = "left", -- Aligns the text to the left edge of the text field. ("left")
+	RIGHT = "right", -- Aligns the text to the right edge of the text field. ("right")
+	START = "start" -- Aligns the text to the starting edge of the text field, as determined by the text language. Usually the same as LEFT. ("start")
 }
 
 --- TextFieldAutoSize enum.
---- @see textfield
+--- Defines the auto-sizing mode for text fields.
+--- @see textfield.autoSize
 TextFieldAutoSize = {
 	CENTER = "center", -- Specifies that the text is to be treated as center-justified text. Any resizing of a single line of a text field is equally distributed to both the right and left sides. ("center")
 	LEFT = "left", -- Specifies that the text is to be treated as left-justified text, meaning that the left side of the text field remains fixed and any resizing of a single line is on the right side. ("left")
 	NONE = "none", -- Specifies that no resizing is to occur. ("none")
 	RIGHT = "right" --  Specifies that the text is to be treated as right-justified text, meaning that the right side of the text field remains fixed and any resizing of a single line is on the left side. ("right")
+}
+
+--- CapsStyle enum.
+--- Defines the type of caps at the end of lines.
+--- @see sprite.lineStyle
+CapsStyle = {
+	NONE = "none", -- No caps at the end of lines. ("none")
+	ROUND = "round", -- Round caps at the end of lines. ("round")
+	SQUARE = "square" -- Square caps at the end of lines. ("square")
+}
+
+--- JointStyle enum.
+--- Defines the type of joint appearance used at angles.
+--- @see sprite.lineStyle
+JointStyle = {
+	BEVEL = "bevel", -- Beveled joints at the angles formed by lines. ("bevel")
+	MITER = "miter", -- Mitered joints at the angles formed by lines. ("miter")
+	ROUND = "round" -- Round joints at the angles formed by lines. ("round")
+}
+
+--- ColorInterpolationMethod enum.
+--- Defines the color space interpolation method for gradients.
+--- @see sprite.beginGradientFill
+--- @see sprite.lineGradientStyle
+ColorInterpolationMethod = {
+	LINEAR_RGB = "linearRGB", -- Linear RGB color space interpolation. ("linearRGB")
+	RGB = "rgb" -- RGB color space interpolation. ("rgb")
+}
+
+--- BlendMode enum.
+--- Defines the blend mode for display objects.
+--- @see sprite.blendMode
+--- @see stamp.blendMode
+--- @see textfield.blendMode
+BlendMode = {
+	ADD = "add", -- Adds the values of the constituent colors. ("add")
+	ALPHA = "alpha", -- Applies the alpha value of each pixel to the background. ("alpha")
+	DARKEN = "darken", -- Selects the darker of the constituent colors. ("darken")
+	DIFFERENCE = "difference", -- Compares colors and subtracts the darker from the lighter. ("difference")
+	ERASE = "erase", -- Erases the background based on the alpha value. ("erase")
+	HARDLIGHT = "hardlight", -- Adjusts color based on the darkness of the display object. ("hardlight")
+	INVERT = "invert", -- Inverts the background. ("invert")
+	LAYER = "layer", -- Forces creation of a transparency group. ("layer")
+	LIGHTEN = "lighten", -- Selects the lighter of the constituent colors. ("lighten")
+	MULTIPLY = "multiply", -- Multiplies the values of the display object colors by the background colors. ("multiply")
+	NORMAL = "normal", -- The display object appears in front of the background. ("normal")
+	OVERLAY = "overlay", -- Adjusts color based on the darkness of the background. ("overlay")
+	SCREEN = "screen", -- Multiplies the complement of the colors, resulting in a bleaching effect. ("screen")
+	SHADER = "shader", -- Uses a shader to define the blend. ("shader")
+	SUBTRACT = "subtract" -- Subtracts the display object colors from the background colors. ("subtract")
 }
 
 GraphicsPathCommand = {

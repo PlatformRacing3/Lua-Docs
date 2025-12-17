@@ -20,7 +20,7 @@ speed = 1
 --- True if the timer has completed all of its intervals, false otherwise. Read-only. 
 stopped = false
 
---- Whether the timer destroys itself upon completing all of its intervals. By default faulse.
+--- Whether the timer destroys itself upon completing all of its intervals. By default false.
 persistent = false
 
 --- Whether or not the timer was destroyed. Calling `destroy` sets this to true. Read-only.
