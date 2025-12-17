@@ -78,15 +78,18 @@ keys = {
 	LINEFEED = 10, -- The LINEFEED key. (10)
 	CLEAR = 12, -- The CLEAR key. (12)
 	RETURN = 13, -- The RETURN key. (13)
+	FUNCTION = 14, -- The FUNCTION key. (14)
+	COMMAND = 15, -- The COMMAND key. (15)
 	SHIFT = 16, -- The SHIFTKEY key. (16)
 	CONTROL = 17, -- The CONTROLKEY key. (17)
 	MENU = 18, -- The ALT key. (18)
 	PAUSE = 19, -- The PAUSE key. (19)
 	CAPSLOCK = 20, -- The CAPS LOCK key. (20)
+	NUMPAD = 21, -- The NUMPAD key. (21)
 	ESCAPE = 27, -- The ESC key. (27)
 	SPACE = 32, -- The SPACEBAR key. (32)
 	PAGEUP = 33, -- The PAGE UP key. (33)
-	NEXT = 34, -- The PAGE DOWN key. (34)
+	PAGEDOWN = 34, -- The PAGE DOWN key. (34)
 	END = 35, -- The END key. (35)
 	HOME = 36, -- The HOME key. (36)
 	LEFT = 37, -- The LEFT ARROW key. (37)
@@ -146,12 +149,12 @@ keys = {
 	NUMPAD7 = 103, -- The 7 key on the numeric keypad. (103)
 	NUMPAD8 = 104, -- The 8 key on the numeric keypad. (104)
 	NUMPAD9 = 105, -- The 9 key on the numeric keypad. (105)
-	MULTIPLY = 106, -- The multiply key. (106)
-	ADD = 107, -- The ADD key. (107)
-	SEPARATOR = 108, -- The separator key. (108)
-	SUBTRACT = 109, -- The subtract key. (109)
-	DECIMAL = 110, -- The decimal key. (110)
-	DIVIDE = 111, -- The divide key. (111)
+	NUMPADMULTIPLY = 106, -- The multiply key on the numeric keypad. (106)
+	NUMPADADD = 107, -- The add key on the numeric keypad. (107)
+	NUMPADENTER = 108, -- The enter key on the numeric keypad. (108)
+	NUMPADSUBTRACT = 109, -- The subtract key on the numeric keypad. (109)
+	NUMPADPERIOD = 110, -- The period key on the numeric keypad. (110)
+	NUMPADSLASH = 111, -- The slash key on the numeric keypad. (111)
 	F1 = 112, -- The F1 key. (112)
 	F2 = 113, -- The F2 key. (113)
 	F3 = 114, -- The F3 key. (114)
@@ -183,5 +186,67 @@ keys = {
 	LCONTROLKEY = 162, -- The left CTRL key. (162)
 	RCONTROLKEY = 163, -- The right CTRL key. (163)
 	LMENU = 164, -- The left ALT key. (164)
-	RMENU = 165 -- The right ALT key. (165)
+	RMENU = 165, -- The right ALT key. (165)
+	SEMICOLON = 186, -- The semicolon key. (186)
+	EQUAL = 187, -- The equals key. (187)
+	COMMA = 188, -- The comma key. (188)
+	MINUS = 189, -- The minus key. (189)
+	PERIOD = 190, -- The period key. (190)
+	SLASH = 191, -- The slash key. (191)
+	BACKQUOTE = 192, -- The backquote key. (192)
+	LEFTBRACKET = 219, -- The left bracket key. (219)
+	BACKSLASH = 220, -- The backslash key. (220)
+	RIGHTBRACKET = 221, -- The right bracket key. (221)
+	QUOTE = 222 -- The quote key (222)
 }
+
+--- GraphicsPathWinding enum.
+--- @see sprite
+GraphicsPathWinding = {
+	EVEN_ODD = "evenOdd", -- Even-odd winding rule. ("evenOdd")
+	NON_ZERO = "nonZero" -- Non-zero winding rule. ("nonZero")
+}
+
+--- GradientType enum.
+--- @see sprite
+GradientType = {
+	LINEAR = "linear", -- Linear gradient fill. ("linear")
+	RADIAL = "radial" -- Radial gradient fill. ("radial")
+}
+
+
+--- GradientSpreadMethod enum.
+--- @see sprite
+GradientSpreadMethod = {
+	PAD = "pad", -- Pad spread method. ("pad")
+	REFLECT = "reflect", -- Reflect spread method. ("reflect")
+	REPEAT = "repeat" -- Repeat spread method. ("repeat")
+}
+
+--- TextFormatAlign enum.
+--- @see textfield
+TextFormatAlign = {
+	CENTER = "center", -- Centers the text to the text field. ("center")
+	END = "end", -- Aligns text to the end edge of a line. ("end")
+	JUSTIFY = "justify", -- Justifies text within the text field. ("justify")
+	LEFT = "left", -- Aligns text to the left within the text field. ("left")
+	RIGHT = "right", -- Aligns text to the right within the text field. ("right")
+	START = "start" -- Aligns text to the start edge of a line. ("start")
+}
+
+--- TextFieldAutoSize enum.
+--- @see textfield
+TextFieldAutoSize = {
+	CENTER = "center", -- Specifies that the text is to be treated as center-justified text. Any resizing of a single line of a text field is equally distributed to both the right and left sides. ("center")
+	LEFT = "left", -- Specifies that the text is to be treated as left-justified text, meaning that the left side of the text field remains fixed and any resizing of a single line is on the right side. ("left")
+	NONE = "none", -- Specifies that no resizing is to occur. ("none")
+	RIGHT = "right" --  Specifies that the text is to be treated as right-justified text, meaning that the right side of the text field remains fixed and any resizing of a single line is on the left side. ("right")
+}
+
+GraphicsPathCommand = {
+}
+
+--- Creates a GradientPathCommand helper, for use with drawPath.
+--- @see GraphicsPathCommand
+function GraphicsPathCommand.new()
+end

@@ -1,21 +1,75 @@
 --- Sprite related variables and functions.
 ...
 
+--- The x position, in pixels, of the sprite when it is the child of another sprite. By default 0.
+x = 0
+
+--- The y position, in pixels, of the sprite when it is the child of another sprite. By default 0.
+y = 0
+
+--- The horizontal scale of the sprite when it is the child of another sprite. By default 1.
+scaleX = 1.0
+
+--- The vertical scale of the sprite when it is the child of another sprite. By default 1.
+scaleY = 1.0
+
+--- The vertical scale of the sprite when it is the child of another sprite. By default 1.
+scaleY = 1.0
+
+--- The rotation of the sprite, in degrees, when it is the child of another sprite. By default 0.
+rotation = 0
+
 --- The alpha of the sprite, represented by a number in the range of 0 - 1. An alpha of 0 means the sprite is completely transparent; 1 means fully visible. By default 1.
 alpha = 1
+
+--- A number value that is multiplied with the red color channel when drawn. By default 1.
+redMultiplier = 1
+
+--- A number value that is multiplied with the green color channel when drawn. By default 1.
+greenMultiplier = 1
+
+--- A number value that is multiplied with the blue color channel when drawn. By default 1.
+blueMultiplier = 1
+
+--- Sets red, green, and blue multipliers based on a hexadecimal RGB value (e.g. 0xFF0000). Write-only.
+colorMultiplier = 0xFFFFFF
+
+--- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by alpha. By default 0.
+alphaOffset = 0
+
+--- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by redMultiplier. By default 0.
+redOffset = 0
+
+--- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by greenMultiplier. By default 0.
+greenOffset = 0
+
+--- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
+blueOffset = 0
 
 --- The blend mode of the sprite. By default "normal".
 --- Valid blend modes are defined here:
 --- <https://airsdk.dev/reference/actionscript/3.0/flash/display/BlendMode.html>
 blendMode = "normal"
 
+--- Whether or not the sprite was destroyed. Calling `destroy` sets this to true. Read-only.
+destroyed = false
+
 --- The number of children the sprite has. By default 0. Read-only.
 --- @see addChild
 --- @see removeChild
 numChildren = 0
 
---- Whether or not the sprite was destroyed. Calling `destroy` sets this to true. Read-only.
-destroyed = false
+--- Returns the bounds of the sprite as a Rectangle, relative to itself.
+---
+--- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
+function getBounds()
+end
+
+--- Returns the bounds of the sprite as a Rectangle, relative to itself, excluding any strokes on shapes.
+---
+--- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html>
+function getRect()
+end
 
 --- Starts a solid fill with the given ARGB values. Subsequent draw operations will rely on this fill until the fill is ended.
 --- You must call endFill() to ensure all draw operations take effect.
@@ -68,7 +122,43 @@ end
 function beginGradientFill(colors, ratios, vars)
 end
 
---- Ends the current gradient fill and applies any pending draw operations to the sprite.
+--- Starts a bitmap fill with the given stamp. Subsequent draw operations will rely on this fill until the fill is ended.
+--- You must call endFill() to ensure all draw operations take effect.
+--- 
+--- To fully understand the parameters detailed below, please refer to Adobe's bitmap fill and matrix box documentations: 
+--- 
+--- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Graphics.html#beginBitmapFill()>
+---
+--- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Matrix.html#createBox()>
+--- 
+--- @tparam stamp stamp A stamp that will be used for the fill.
+--- @tparam boolean repeats Whether the fill repeats the bitmap or not.
+--- @tparam boolean smooth Whether smoothing is applied for stamp upscaling/rotation.
+--- @param vars An AS3 object containing any optional parameters for the bitmap fill. Valid options are:
+----
+---- * !x: (***number***) The distance, in pixels, to translate the stamp fill to the right along the x-axis. By default 0.
+---- 
+---- * !y: (***number***) The distance, in pixels, to translate the stamp fill down along the y-axis. By default 0.
+---- 
+---- * !scaleX: (***number***) The factor to scale by horizontally. By default 1.
+---- 
+---- * !scaleY: (***number***) The factor to scale by vertically. By default 1.
+---- 
+---- * !rotation: (***number***) The amount to rotate the stamp fill, in degrees. By default 0.
+----
+--- @see endFill
+--- @usage someSprite.beginBitmapFill(someStamp,true,true,toobject{
+----     x = 5, y = 5,
+----     scaleX = 3, scaleY = 3,
+----     rotation = 45
+---- })
+---- someSprite.drawRect(0,0,255,255)
+---- someSprite.endFill()
+---- someLayer.drawSprite(someSprite)
+function beginBitmapFill(stamp, repeats, smooth, vars)
+end
+
+--- Ends the current fill and applies any pending draw operations to the sprite.
 function endFill()
 end
 
@@ -117,6 +207,86 @@ end
 function lineStyle(color, thickness, vars)
 end
 
+--- Specifies a gradient coloring for the line stroke used for subsequent draw operations, such as `lineTo` and `drawCircle`.
+--- lineStyle must be called beforehand, with the desired line thickness and parameters.
+--- 
+--- To fully understand the parameters detailed below, please refer to Adobe's gradient line style and gradient box documentations: 
+--- 
+--- <https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html#beginGradientFill()>
+--- 
+--- <https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html#createGradientBox()>
+--- @param colors An AS3 array of the ARGB values of the fill. The simplest way to provide these values is with the `0xAARRGGBB` hex format, where AA is the hex value from 0 - 255 for the alpha, RR for red, GG for green, and BB for blue.
+--- @param ratios An AS3 array of the color distribution ratios; valid values are 0-255. These values define the percentages of the width where the respective color is sampled at 100%. The value 0 represents the left position in the gradient box, and 255 represents the right position in the gradient box. Each value must be greater than the last.
+--- @param vars An AS3 object containing any optional parameters for the gradient fill. Valid options are:
+---- 
+---- * !type: (***string***) The type of gradient fill. Can be either "linear" or "radial". By default "linear".
+---- 
+---- * !width: (***number***) The width of the gradient box. By default 127.
+---- 
+---- * !height: (***number***) The height of the gradient box. By default 127.
+---- 
+---- * !x: (***number***) The distance, in pixels, to translate the gradient box values to the right along the x-axis. This value is offset by half of the width parameter. By default 0.
+---- 
+---- * !y: (***number***) The distance, in pixels, to translate the gradient box values down along the y-axis. This value is offset by half of the height parameter. By default 0.
+---- 
+---- * !rotation: (***number***) The amount to rotate the gradient box values, in degrees.
+---- 
+---- * !focalPointRatio: (***number***) A multiplier that controls the location of the focal point of the gradient. 0 means that the focal point is in the center. 1 means that the focal point is at one border of the gradient circle. -1 means that the focal point is at the other border of the gradient circle. A value less than -1 or greater than 1 is clamped to -1 or 1
+---- 
+---- * !spreadMethod: (***string***) Which spread method to use. Can be either "pad", "reflect", or "repeat". By default "pad".
+---- 
+---- * !interpolationMethod: (***string***) Which color space interpolation method to use. Can be either "rgb" or "linearRGB". By default "rgb".
+---- 
+--- @see endFill
+--- @usage local colors = toarray{0xFF0000FF, 0xFFFFFFFF} -- The gradient will be blue on the left and white on the right
+---- local ratios = toarray{0.3 * 255, 1 * 255} -- The gradient will be fully blue up to 30% of the way through the fill, then transition from blue to white across the remaining 70%
+---- someSprite.lineStyle(0,24)
+---- someSprite.gradientLineStyle(colors, ratios, toobject{width = 100, height = 200, spreadMethod = GradientSpreadMethod.PAD}) -- The width and height of the gradient box will now match that of our next draw call.
+---- someSprite.drawRect(0, 0, 100, 200)
+---- someSprite.endFill()
+---- someLayer.drawSprite(someSprite)
+function gradientLineStyle(colors, ratios, vars)
+end
+
+
+--- Specifies a gradient coloring for the line stroke used for subsequent draw operations, such as `lineTo` and `drawCircle`.
+--- lineStyle must be called beforehand, with the desired line thickness and parameters.
+--- 
+--- To fully understand the parameters detailed below, please refer to Adobe's bitmap line style and matrix box documentations: 
+--- 
+--- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Graphics.html#lineBitmapStyle()>
+---
+--- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Matrix.html#createBox()>
+--- 
+--- @tparam stamp stamp A stamp that will be used for the line style.
+--- @tparam boolean repeats Whether the line style repeats the stamp or not.
+--- @tparam boolean smooth Whether smoothing is applied for stamp upscaling/rotation.
+--- @param vars An AS3 object containing any optional parameters for the bitmap line style. Valid options are:
+----
+---- * !x: (***number***) The distance, in pixels, to translate the stamp fill to the right along the x-axis. By default 0.
+---- 
+---- * !y: (***number***) The distance, in pixels, to translate the stamp fill down along the y-axis. By default 0.
+---- 
+---- * !scaleX: (***number***) The factor to scale by horizontally. By default 1.
+---- 
+---- * !scaleY: (***number***) The factor to scale by vertically. By default 1.
+---- 
+---- * !rotation: (***number***) The amount to rotate the stamp fill, in degrees. By default 0.
+----
+--- @see endFill
+--- @usage
+---- someSprite.lineStyle(0,24)
+---- someSprite.beginBitmapFill(someStamp,true,true,toobject{
+----     x = 5, y = 5,
+----     scaleX = 3, scaleY = 3,
+----     rotation = 45
+---- })
+---- someSprite.drawRect(0,0,255,255)
+---- someSprite.endFill()
+---- someLayer.drawSprite(someSprite)
+function bitmapLineStyle(stamp, repeats, smooth, vars)
+end
+
 --- Sets the current drawing position used by `lineTo`, `curveTo`, and `cubicCurveTo` to the given coordinates.
 --- @tparam number x The x-coordinate of the new drawing position.
 --- @tparam number y The y-coordinate of the new drawing position.
@@ -158,6 +328,21 @@ end
 --- @see lineStyle
 --- @usage someSprite.cubicCurveTo(-50, 50, -100, -50, -150, 0) -- Draw a curve from (0, 0) to (-150, 0), using the control points (-50, 50) and (-100, -50) to create an S-like curve
 function cubicCurveTo(controlX1, controlY1, controlX2, controlY2, anchorX, anchorY)
+end
+
+--- Draws a path based on a given command string.
+---
+--- Can provide a significant performance boost over individual moveTo/lineTo/curveTo/cubicCurveTo calls.
+---
+--- This method behaves slightly differently from individual moveTo/lineTo/curveTo/cubicCurveTo calls, see Adobe's documentation.
+---
+--- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Graphics.html#drawPath()>
+--- @tparam string commands A string containing all of the commands for the path, e.g "M 100 100 L 250.5 -130.221 L 300 300 L 100 100". A command string can be built with the GraphicsPathCommand helper.
+--- @tparam string winding A string defining the winding for the path. "evenOdd" by default.
+--- @see GraphicsPathCommand
+--- @usage local path = GraphicsPathCommand.new().moveTo(100,100).lineTo(250.5,-130.221).lineTo(300,300).lineTo(100,100).toString()
+---- someSprite.drawPath(path, GraphicsPathWinding.NON_ZERO)
+function drawPath(commands, winding)
 end
 
 --- Draws a circle using the current fill and line style.

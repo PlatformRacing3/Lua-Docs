@@ -10,6 +10,21 @@ team = "none"
 --- @see eventlistener
 tick = nil
 
+--- The event handler for key events, which fire when a key is pressed or released.
+--- Results are as defined here:
+--- <https://airsdk.dev/reference/actionscript/3.0/flash/events/KeyboardEvent.html>
+--- @usage player.keyEvent.addListener(function(event) -- chat out all event data for a keyEvent
+----     local eventData = totable(event) 
+----     player.chat(eventData.isKeyDown)
+----     player.chat(eventData.keyCode)
+----     player.chat(eventData.charCode)
+----     player.chat(eventData.shiftKey)
+----     player.chat(eventData.ctrlKey)
+----     player.chat(eventData.altKey)
+---- end)
+--- @see eventlistener
+keyEvent = nil
+
 --- Player's current health. The player is killed if it goes to zero or below.
 health = 5
 
@@ -133,6 +148,15 @@ mousex = 0
 
 --- A scalar with a range of [-1, 1] representing the mouse's y coordinate along the screen. -1 means the bottom-most position, 0 means the center, and 1 means the top-most position.
 mousey = 0
+
+--- A scalar with a range of [0, inf) representing the strength of the player's superjump, were it to be released at that time. Caps at 0.61 for a normal superjump.
+charge = 0
+
+--- Whether a player keeps their hats when hurt or not.
+stickyhats = false
+
+--- True if the player died / forfeited / finished, false otherwise. Read-only.
+finished = true
 
 --- Hurts the player by a specific amount and with a specified velocity.
 --- @tparam int damage The amount of damage done to the player. By default 1.

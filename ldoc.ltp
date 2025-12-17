@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="$(ldoc.custom_css)" type="text/css" />
 # end
     <style>
+        #content {
+            width: calc(100% - 16em);
+            min-width: 700px;
+        }
+        table.function_list td.name {
+            min-width: 350px;
+            max-width: 350px;
+        }
         span.parameter {
             font-size: 1.09em;
         }
@@ -31,12 +39,24 @@
 
 <div id="main">
 
+# local function sort(t, comp)
+#   local i = 2
+#   while i <= #t do
+#     local j = i;
+#     while j > 1 and comp(t[j-1],t[j]) do
+#       t[j-1], t[j] = t[j], t[j-1]
+#       j = j - 1
+#     end
+#     i = i + 1
+#   end
+# end
+
 # local no_spaces = ldoc.no_spaces
 # local use_li = ldoc.use_li
 # local display_name = ldoc.display_name
 # local iter = ldoc.modules.iter
 # local function M(txt,item) return ldoc.markup(txt,item,ldoc.plain) end
-# local nowrap = ldoc.wrap and '' or 'nowrap'
+# local nowrap = ''
 
 <!-- Menu -->
 
@@ -79,7 +99,12 @@
 #  if ldoc.allowed_in_contents(type,module) then
 <h2>$(kind)</h2>
 <ul class="$(kind=='Topics' and '' or 'nowrap')">
-#  for mod in mods() do local name = display_name(mod)
+#  local modSortTable = {}
+#  for mod in mods() do modSortTable[#modSortTable + 1] = mod end
+#  sort(modSortTable, function(a,b) return display_name(a):lower() > display_name(b):lower() end)
+#   for i = 1,#modSortTable do
+#    local mod = modSortTable[i]
+#    local name = display_name(mod)
 #   if mod.name == this_mod then
   <li><strong>$(name)</strong></li>
 #   else
@@ -301,7 +326,11 @@
 <h2>$(kind)</h2>
 # kind = kind:lower()
 <table class="module_list">
-# for m in mods() do
+#  local modSortTable = {} -- I know it's being sorted twice I could not give less of a fuck
+#  for mod in mods() do modSortTable[#modSortTable + 1] = mod end
+#  sort(modSortTable, function(a,b) return display_name(a):lower() > display_name(b):lower() end)
+#  for i = 1, #modSortTable do
+#   local m = modSortTable[i]
 	<tr>
 		<td class="name"  $(nowrap)><a href="$(no_spaces(kind))/$(m.name).html">$(m.name)</a></td>
 		<td class="summary">$(M(ldoc.strip_header(m.summary),m))</td>
