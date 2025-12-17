@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="$(ldoc.custom_css)" type="text/css" />
 # end
     <style>
-		div.content {
-            width = 1000px;
+        #content {
+            width: calc(100% - 16em);
+            min-width: 700px;
         }
         table.function_list td.name {
             min-width: 350px;
