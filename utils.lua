@@ -201,15 +201,14 @@ keys = {
 }
 
 --- GraphicsPathWinding enum.
---- @see drawPath
+--- @see sprite
 GraphicsPathWinding = {
 	EVEN_ODD = "evenOdd", -- Even-odd winding rule. ("evenOdd")
 	NON_ZERO = "nonZero" -- Non-zero winding rule. ("nonZero")
 }
 
 --- GradientType enum.
---- @see beginGradientFill
---- @see lineGradientStyle
+--- @see sprite
 GradientType = {
 	LINEAR = "linear", -- Linear gradient fill. ("linear")
 	RADIAL = "radial" -- Radial gradient fill. ("radial")
@@ -217,8 +216,7 @@ GradientType = {
 
 
 --- GradientSpreadMethod enum.
---- @see beginGradientFill
---- @see lineGradientStyle
+--- @see sprite
 GradientSpreadMethod = {
 	PAD = "pad", -- Pad spread method. ("pad")
 	REFLECT = "reflect", -- Reflect spread method. ("reflect")
@@ -245,10 +243,10 @@ TextFieldAutoSize = {
 	RIGHT = "right" --  Specifies that the text is to be treated as right-justified text, meaning that the right side of the text field remains fixed and any resizing of a single line is on the left side. ("right")
 }
 
-GradientPathCommand = {
+GraphicsPathCommand = {
 }
 
 --- Creates a GradientPathCommand helper, for use with drawPath.
---- @see GradientPathCommand
-function GradientPathCommand.new()
+--- @see GraphicsPathCommand
+function GraphicsPathCommand.new()
 end
