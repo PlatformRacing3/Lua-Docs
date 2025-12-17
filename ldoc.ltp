@@ -36,7 +36,7 @@
 # local display_name = ldoc.display_name
 # local iter = ldoc.modules.iter
 # local function M(txt,item) return ldoc.markup(txt,item,ldoc.plain) end
-# local nowrap = ldoc.wrap and '' or 'nowrap'
+# local nowrap = ''
 
 <!-- Menu -->
 
