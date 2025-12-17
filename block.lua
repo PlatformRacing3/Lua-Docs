@@ -144,6 +144,7 @@ end
 --- Returns the block's texture as a lua stamp.
 --- The texture is the block's raw texture, not accounting for effects such as vanishing, freezing, dye, etc.
 --- @usage local stamp = tolua(block.getStamp())
+--- @treturn stamp The block's texture, or nil if the player has backgrounds disabled in their settings.
 function getStamp()
 end
 
