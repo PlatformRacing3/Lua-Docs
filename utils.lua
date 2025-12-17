@@ -70,6 +70,7 @@ function instanceof(object, class)
 end
 
 --- List of keycodes.
+-- @table keys
 keys = {
 	NONE = 0, -- No key pressed.
 	CANCEL = 3, -- The CANCEL key. (3)
@@ -208,6 +209,7 @@ keys = {
 --- GraphicsPathWinding enum.
 --- Defines the winding rule for path drawing.
 --- @see sprite.drawPath
+-- @table GraphicsPathWinding
 GraphicsPathWinding = {
 	EVEN_ODD = "evenOdd", -- Even-odd winding rule. ("evenOdd")
 	NON_ZERO = "nonZero" -- Non-zero winding rule. ("nonZero")
@@ -217,6 +219,7 @@ GraphicsPathWinding = {
 --- Defines the type of gradient fill.
 --- @see sprite.beginGradientFill
 --- @see sprite.lineGradientStyle
+-- @table GradientType
 GradientType = {
 	LINEAR = "linear", -- Linear gradient fill. ("linear")
 	RADIAL = "radial" -- Radial gradient fill. ("radial")
@@ -226,6 +229,7 @@ GradientType = {
 --- Defines the spread method for gradient fills.
 --- @see sprite.beginGradientFill
 --- @see sprite.lineGradientStyle
+-- @table GradientSpreadMethod
 GradientSpreadMethod = {
 	PAD = "pad", -- Pad spread method. ("pad")
 	REFLECT = "reflect", -- Reflect spread method. ("reflect")
@@ -236,6 +240,7 @@ GradientSpreadMethod = {
 --- Defines the alignment of text within a text field.
 --- @see textfield.align
 --- @see sprite.addText
+-- @table TextFormatAlign
 TextFormatAlign = {
 	CENTER = "center", -- Centers the text within the text field. ("center")
 	END = "end", -- Aligns the text to the ending edge of the text field, as determined by the text language. Usually the same as RIGHT. ("end")
@@ -248,6 +253,7 @@ TextFormatAlign = {
 --- TextFieldAutoSize enum.
 --- Defines the auto-sizing mode for text fields.
 --- @see textfield.autoSize
+-- @table TextFieldAutoSize
 TextFieldAutoSize = {
 	CENTER = "center", -- Specifies that the text is to be treated as center-justified text. Any resizing of a single line of a text field is equally distributed to both the right and left sides. ("center")
 	LEFT = "left", -- Specifies that the text is to be treated as left-justified text, meaning that the left side of the text field remains fixed and any resizing of a single line is on the right side. ("left")
@@ -258,6 +264,7 @@ TextFieldAutoSize = {
 --- CapsStyle enum.
 --- Defines the type of caps at the end of lines.
 --- @see sprite.lineStyle
+-- @table CapsStyle
 CapsStyle = {
 	NONE = "none", -- No caps at the end of lines. ("none")
 	ROUND = "round", -- Round caps at the end of lines. ("round")
@@ -267,6 +274,7 @@ CapsStyle = {
 --- JointStyle enum.
 --- Defines the type of joint appearance used at angles.
 --- @see sprite.lineStyle
+-- @table JointStyle
 JointStyle = {
 	BEVEL = "bevel", -- Beveled joints at the angles formed by lines. ("bevel")
 	MITER = "miter", -- Mitered joints at the angles formed by lines. ("miter")
@@ -277,6 +285,7 @@ JointStyle = {
 --- Defines the color space interpolation method for gradients.
 --- @see sprite.beginGradientFill
 --- @see sprite.lineGradientStyle
+-- @table ColorInterpolationMethod
 ColorInterpolationMethod = {
 	LINEAR_RGB = "linearRGB", -- Linear RGB color space interpolation. ("linearRGB")
 	RGB = "rgb" -- RGB color space interpolation. ("rgb")
@@ -287,6 +296,7 @@ ColorInterpolationMethod = {
 --- @see sprite.blendMode
 --- @see stamp.blendMode
 --- @see textfield.blendMode
+-- @table BlendMode
 BlendMode = {
 	ADD = "add", -- Adds the values of the constituent colors. ("add")
 	ALPHA = "alpha", -- Applies the alpha value of each pixel to the background. ("alpha")
@@ -304,6 +314,7 @@ BlendMode = {
 	SHADER = "shader", -- Uses a shader to define the blend. ("shader")
 	SUBTRACT = "subtract" -- Subtracts the display object colors from the background colors. ("subtract")
 }
+
 
 GraphicsPathCommand = {
 }

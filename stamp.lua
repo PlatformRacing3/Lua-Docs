@@ -57,7 +57,7 @@ greenOffset = 0
 blueOffset = 0
 
 --- The blend mode of the stamp. Use @{utils.BlendMode|BlendMode} enum values. By default @{utils.BlendMode.NORMAL|BlendMode.NORMAL}.
---- @see @{utils.BlendMode|BlendMode}
+--- @see utils.BlendMode
 blendMode = "normal"
 
 --- Whether or not the stamp was destroyed. Calling `destroy` sets this to true. Read-only.

@@ -13,7 +13,7 @@ alpha = 1
 
 --- The blend mode of the art layer. Use @{utils.BlendMode|BlendMode} enum values. By default @{utils.BlendMode.NORMAL|BlendMode.NORMAL}.
 --- Not all blend modes are guaranteed to have any effect when used by art layers
---- @see @{utils.BlendMode|BlendMode}
+--- @see utils.BlendMode
 blendMode = "normal"
 
 --- Whether or not the art layer was destroyed. Calling `destroy` sets this to true. Read-only.

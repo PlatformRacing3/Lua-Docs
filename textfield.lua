@@ -47,7 +47,7 @@ greenOffset = 0
 blueOffset = 0
 
 --- The blend mode of the text field. Use BlendMode enum values. By default BlendMode.NORMAL.
---- @see @{utils.BlendMode|BlendMode}
+--- @see utils.BlendMode
 blendMode = "normal"
 
 --- Whether or not the text field was destroyed. Calling `destroy` sets this to true. Read-only.
@@ -69,7 +69,7 @@ size = 14
 color = 0xFFFFFF
 
 --- Text alignment mode. Use @{utils.TextFormatAlign|TextFormatAlign} enum values. By default @{utils.TextFormatAlign.LEFT|TextFormatAlign.LEFT}.
---- @see @{utils.TextFormatAlign|TextFormatAlign}
+--- @see utils.TextFormatAlign
 align = "left"
 
 --- Whether the text automatically wraps around or not.
@@ -79,7 +79,7 @@ wordWrap = true
 underline = false
 
 --- Text auto-sizing mode. Use @{utils.TextFieldAutoSize|TextFieldAutoSize} enum values. By default @{utils.TextFieldAutoSize.NONE|TextFieldAutoSize.NONE}.
---- @see @{utils.TextFieldAutoSize|TextFieldAutoSize}
+--- @see utils.TextFieldAutoSize
 autoSize = "none"
 
 --- Destroys the text field.
