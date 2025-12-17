@@ -46,7 +46,7 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the sprite. Use BlendMode enum values. By default BlendMode.NORMAL.
+--- The blend mode of the sprite. Use `BlendMode` enum values. By default `BlendMode.NORMAL`.
 --- @see BlendMode
 blendMode = "normal"
 
@@ -58,13 +58,13 @@ destroyed = false
 --- @see removeChild
 numChildren = 0
 
---- Returns the bounds of the sprite as a Rectangle, relative to itself.
---- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the sprite
+--- Returns the bounds of the sprite as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself.
+--- @treturn Rectangle The bounds of the sprite
 function getBounds()
 end
 
---- Returns the bounds of the sprite as a Rectangle, relative to itself, excluding any strokes on shapes.
---- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the sprite
+--- Returns the bounds of the sprite as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself, excluding any strokes on shapes.
+--- @treturn Rectangle The bounds of the sprite
 function getRect()
 end
 
@@ -183,9 +183,9 @@ end
 ----     
 ----     + !horizontal: Do not scale the line thickness if the sprite is scaled only horizontally and not vertically.
 ---- 
----- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. Use CapsStyle enum values. By default CapsStyle.ROUND.
+---- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. Use `CapsStyle` enum values. By default `CapsStyle.ROUND`.
 ---- 
----- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. Use JointStyle enum values. By default JointStyle.ROUND. When using JointStyle.MITER, the length of miters is limited by the `miterLimit` parameter.
+---- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. Use `JointStyle` enum values. By default `JointStyle.ROUND`. When using JointStyle.MITER, the length of miters is limited by the `miterLimit` parameter.
 ---- 
 ---- * !miterLimit: (***int***) The maximum length, in pixels, of mitered joints used for the angles formed by lines drawn with this line style. By default 3. This value is clamped between 1 and 255.
 --- @see CapsStyle

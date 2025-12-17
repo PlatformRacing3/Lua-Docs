@@ -68,7 +68,7 @@ size = 14
 --- RGB color of the text.
 color = 0xFFFFFF
 
---- Text alignment mode. Use TextFormatAlign enum values (LEFT, RIGHT, CENTER, JUSTIFY, START, END). By default TextFormatAlign.LEFT.
+--- Text alignment mode. Use `TextFormatAlign` enum values. By default `TextFormatAlign.LEFT`.
 --- @see TextFormatAlign
 align = "left"
 
@@ -78,7 +78,7 @@ wordWrap = true
 --- Whether the text is underlined or not. By default false.
 underline = false
 
---- Text auto-sizing mode. Use TextFieldAutoSize enum values (NONE, LEFT, RIGHT, CENTER). By default TextFieldAutoSize.NONE.
+--- Text auto-sizing mode. Use `TextFieldAutoSize` enum values. By default `TextFieldAutoSize.NONE`.
 --- @see TextFieldAutoSize
 autoSize = "none"
 
@@ -86,12 +86,12 @@ autoSize = "none"
 function destroy()
 end
 
---- Returns the bounds of the text field as a Rectangle, relative to itself.
---- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the text field
+--- Returns the bounds of the text field as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself.
+--- @treturn Rectangle The bounds of the text field
 function getBounds()
 end
 
---- Returns the bounds of the text field as a Rectangle, relative to itself, excluding any strokes on shapes.
---- @treturn [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html) The bounds of the text field
+--- Returns the bounds of the text field as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself, excluding any strokes on shapes.
+--- @treturn Rectangle The bounds of the text field
 function getRect()
 end
