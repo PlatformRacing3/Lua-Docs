@@ -329,8 +329,11 @@ function cubicCurveTo(controlX1, controlY1, controlX2, controlY2, anchorX, ancho
 end
 
 --- Draws a path based on a given command string.
+---
 --- Can provide a significant performance boost over individual moveTo/lineTo/curveTo/cubicCurveTo calls.
+---
 --- This method behaves slightly differently from individual moveTo/lineTo/curveTo/cubicCurveTo calls, see Adobe's documentation.
+---
 --- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Graphics.html#drawPath()>
 --- @tparam string commands A string containing all of the commands for the path, e.g "M 100 100 L 250.5 -130.221 L 300 300 L 100 100". A command string can be built with the GraphicsPathCommand helper.
 --- @tparam string winding A string defining the winding for the path. "evenOdd" by default.
