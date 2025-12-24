@@ -44,14 +44,14 @@ postprocess_html = function(html, module)
     do
         -- (1) Find modules within the HTML content
         local modules_start = assert(html:find("<h2>Modules</h2>"), "Could not find Modules header!")
-        local open_ul_start, open_ul_end = assert(html:find("<ul[^<>]+>", modules_start), "Could not find Modules <ul> start!")
-        local close_ul_start, close_ul_end = assert(html:find("</ul[^<>]+>", modules_start), "Could not find Modules </ul> end!")
+        local open_ul_start, open_ul_end = assert(html:find("<ul[^<>]*>", modules_start), "Could not find Modules <ul> start!")
+        local close_ul_start, close_ul_end = assert(html:find("</ul[^<>]*>", modules_start), "Could not find Modules </ul> end!")
         local ul_content = html:sub(open_ul_start, close_ul_end)
 
         -- (2) Extract modules from HTML content
         local modules = {}
         for li_content in ul_content:gmatch("  <li>%s*(.-)%s*</li>") do
-            local display_name = li_content:match("<[^<>]+>([^<>\r\n]-)</[^<>]+>") -- Captures the contents of the innermost HTML tag in case of nesting
+            local display_name = li_content:match("<[^<>]*>([^<>\r\n]-)</[^<>]*>") -- Captures the contents of the innermost HTML tag in case of nesting
             table.insert(modules, {html = li_content, name = display_name})
         end
 
