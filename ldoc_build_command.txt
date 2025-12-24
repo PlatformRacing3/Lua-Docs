@@ -1,1 +1,1 @@
-ldoc .
+ldoc "." -d "../PR3-Doc"
