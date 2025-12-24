@@ -51,9 +51,9 @@ postprocess_html = function(html, module)
 
         -- (2) Extract modules from HTML content
         local modules = {}
-        for li_content in ul_content:gmatch("  <li>%s*(.-)%s*</li>") do
-            local display_name = li_content:match("<[^<>]*>([^<>\r\n]-)</[^<>]*>") -- Captures the contents of the innermost HTML tag in case of nesting
-            table.insert(modules, {html = li_content, name = display_name})
+        for li_html in ul_content:gmatch("  <li>%s*.-%s*</li>") do
+            local display_name = li_html:match("<[^<>]*>([^<>\r\n]-)</[^<>]*>") -- Captures the contents of the innermost HTML tag in case of nesting
+            table.insert(modules, {html = li_html, name = display_name})
         end
 
         -- (3) Sort the modules table
