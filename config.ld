@@ -16,9 +16,9 @@ sort_modules = false -- Custom sorting is implemented in postprocess_html
 
 ---[[ Import required by LDocs ]]---
 
-assert = import("assert")
-table = import("table")
-ipairs = import("ipairs")
+local assert = import("assert")
+local table = import("table")
+local ipairs = import("ipairs")
 
 ------------------------------------
 
