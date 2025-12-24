@@ -21,7 +21,7 @@ ypos = 0
 --- Provides the broken block, the side from which it was broken, and the reason;
 --- the reason may be either a Projectile, a Player (which may also be a LocalPlayer), or nil
 --- @see eventlistener
---- @see @{utils.instanceof|instanceof}
+--- @see @{_G.instanceof|instanceof}
 --- @usage game.level.getBlockAt(5, 7).onBreak.addListener(function(event)
 ----     event.cancelled = true --Prevents the block from breaking
 ----     
@@ -78,7 +78,7 @@ end
 --- @usage block.bulkteleportto(false, true, 0, -7, 0, -8, 1, -8, 0, -8)
 --- @usage block.bulkteleportto(false, true, tovararg({{x = 0, y = -7}, {x = 0, y = -8}, {x = 1, y = -8}, {x = 1, y = -7}}))
 --- @see teleportto
---- @see @{utils.tovararg|tovararg}
+--- @see @{_G.tovararg|tovararg}
 function bulkteleportto(removecurrentblock, removetargetspot, ...)
 end
 

@@ -46,8 +46,8 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the sprite. Use @{utils.BlendMode|BlendMode} enum values. By default `BlendMode.NORMAL`.
---- @see utils.BlendMode
+--- The blend mode of the sprite. Use @{_G.BlendMode|BlendMode} enum values. By default `BlendMode.NORMAL`.
+--- @see _G.BlendMode
 blendMode = "normal"
 
 --- Whether or not the sprite was destroyed. Calling `destroy` sets this to true. Read-only.
@@ -110,9 +110,9 @@ end
 ---- * !interpolationMethod: (***string***) Which color space interpolation method to use. Use ColorInterpolationMethod.RGB or ColorInterpolationMethod.LINEAR_RGB. By default ColorInterpolationMethod.RGB.
 ---- 
 --- @see endFill
---- @see utils.GradientType
---- @see utils.GradientSpreadMethod
---- @see utils.ColorInterpolationMethod
+--- @see _G.GradientType
+--- @see _G.GradientSpreadMethod
+--- @see _G.ColorInterpolationMethod
 --- @usage local colors = toarray{0xFF0000FF, 0xFFFFFFFF} -- The gradient will be blue on the left and white on the right
 ---- local ratios = toarray{0.3 * 255, 1 * 255} -- The gradient will be fully blue up to 30% of the way through the fill, then transition from blue to white across the remaining 70%
 ---- someSprite.beginGradientFill(colors, ratios, toobject{type = GradientType.LINEAR, width = 100, height = 200}) -- The width and height of the gradient box will now match that of our next draw call.
@@ -183,13 +183,13 @@ end
 ----     
 ----     + !horizontal: Do not scale the line thickness if the sprite is scaled only horizontally and not vertically.
 ---- 
----- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. Use @{utils.CapsStyle|CapsStyle} enum values. By default `CapsStyle.ROUND`.
+---- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. Use @{_G.CapsStyle|CapsStyle} enum values. By default `CapsStyle.ROUND`.
 ---- 
----- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. Use @{utils.JointStyle|JointStyle} enum values. By default `JointStyle.ROUND`. When using JointStyle.MITER, the length of miters is limited by the `miterLimit` parameter.
+---- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. Use @{_G.JointStyle|JointStyle} enum values. By default `JointStyle.ROUND`. When using JointStyle.MITER, the length of miters is limited by the `miterLimit` parameter.
 ---- 
 ---- * !miterLimit: (***int***) The maximum length, in pixels, of mitered joints used for the angles formed by lines drawn with this line style. By default 3. This value is clamped between 1 and 255.
---- @see utils.CapsStyle
---- @see utils.JointStyle
+--- @see _G.CapsStyle
+--- @see _G.JointStyle
 --- @usage someSprite.lineStyle(0xFFFF0000, 5) -- Draw a solid red line with a thickness of 5 pixels
 ---- someSprite.lineTo(000, 100) -- Draw the line from (0, 0) to (0, 100)
 ---- someSprite.lineStyle(0xFF000000, 1) -- Draw a solid black line with a thickness of 1 pixel
@@ -228,9 +228,9 @@ end
 ---- * !interpolationMethod: (***string***) Which color space interpolation method to use. Use ColorInterpolationMethod.RGB or ColorInterpolationMethod.LINEAR_RGB. By default ColorInterpolationMethod.RGB.
 ---- 
 --- @see endFill
---- @see utils.GradientType
---- @see utils.GradientSpreadMethod
---- @see utils.ColorInterpolationMethod
+--- @see _G.GradientType
+--- @see _G.GradientSpreadMethod
+--- @see _G.ColorInterpolationMethod
 --- @usage local colors = toarray{0xFF0000FF, 0xFFFFFFFF} -- The gradient will be blue on the left and white on the right
 ---- local ratios = toarray{0.3 * 255, 1 * 255} -- The gradient will be fully blue up to 30% of the way through the fill, then transition from blue to white across the remaining 70%
 ---- someSprite.lineStyle(0,24)
@@ -333,7 +333,7 @@ end
 --- @tparam string commands A string containing all of the commands for the path, e.g "M 100 100 L 250.5 -130.221 L 300 300 L 100 100". A command string can be built with the GraphicsPathCommand helper.
 --- @tparam string winding A string defining the winding for the path. Use GraphicsPathWinding.EVEN_ODD or GraphicsPathWinding.NON_ZERO. By default GraphicsPathWinding.EVEN_ODD.
 --- @see GraphicsPathCommand
---- @see utils.GraphicsPathWinding
+--- @see _G.GraphicsPathWinding
 --- @usage local path = GraphicsPathCommand.new().moveTo(100,100).lineTo(250.5,-130.221).lineTo(300,300).lineTo(100,100).toString()
 ---- someSprite.drawPath(path, GraphicsPathWinding.NON_ZERO)
 function drawPath(commands, winding)
@@ -414,7 +414,7 @@ end
 ---- 
 ---- * !wordWrap: (***bool***) Whether or not the text should be word wrapped within the text field's size. By default false.
 ---- 
---- @see utils.TextFormatAlign
+--- @see _G.TextFormatAlign
 --- @usage someSprite.addText(string.rep("Hello, world! ", 30), 0, 0, 0xFFFFAA00, 14, toobject{bold = true, wordWrap = true, width = 150, align = TextFormatAlign.CENTER}) -- Creates orange text at (0, 0), word-wrapping with a width of 150 pixels.
 function addText(text, x, y, color, size, vars)
 end
