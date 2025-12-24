@@ -87,7 +87,7 @@ gameEvent = nil
 playerRemoved = nil
 
 --- Returns a new lua-side RNG object (tolua not needed), seeded by the given seed, or a generated client seed is none is given.
---- int seed (optional) An optional number input to set the seed with. If none is given, a client-generated seed is used.
+--- @tparam int seed (optional) An optional number input to set the seed with. If none is given, a client-generated seed is used.
 --- @treturn RNG The new RNG object.
 --- @usage local rng = game.newRNG(51832591)
 --- @see RNG
