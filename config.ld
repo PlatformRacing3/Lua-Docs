@@ -7,8 +7,9 @@ output = "index"
 dir = "../PR3-Doc/" -- This is relative to working directory from which LDoc is called, NOT the source directory LDoc is reading from
 ext = "html"
 
-template = "!"
-style = "./"
+template = "!" -- Default template
+style = "!" -- Default css
+custom_css = "ldoc.css" -- Append our custom css
 merge = true
 wrap = true
 sort_modules = true
