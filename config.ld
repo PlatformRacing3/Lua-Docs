@@ -7,7 +7,7 @@ output = "index"
 dir = "PR3-Doc/"
 ext = "html"
 
-template = "!md"
+template = "!"
 style = "./"
 merge = true
 wrap = true
