@@ -19,6 +19,7 @@ sort_modules = false -- Custom sorting is implemented in postprocess_html
 local assert = import("assert")
 local table = import("table")
 local ipairs = import("ipairs")
+local select = import("select")
 
 ------------------------------------
 
@@ -65,7 +66,7 @@ postprocess_html = function(html, module)
 
         -- (4) Generate string from modules table
         local new_ul_content = ""
-        for i, v in ipairs(modules) do
+        for _, v in ipairs(modules) do
             new_ul_content = new_ul_content .. v.html
         end
 
