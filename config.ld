@@ -33,3 +33,6 @@ postprocess_html = function(html, module)
 
     return html
 end
+
+-- Silly hack to allow template file to access import
+import("_G").import = import
