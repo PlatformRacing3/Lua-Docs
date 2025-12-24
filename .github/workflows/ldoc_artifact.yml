@@ -48,32 +48,13 @@ jobs:
             luarocks install penlight
             luarocks install ldoc
       - name: Run LDoc
-        run: ldoc "${{ runner.temp }}/source/" --template "${{ runner.temp }}/source/" --format="markdown" -d "${{ runner.temp }}/LDOC"
+        run: ldoc "${{ runner.temp }}/source/"
       - name: Upload Artifact (ZIP)
         uses: actions/upload-artifact@v6
         with:
             name: 'LDOC_zip'
             path: "${{ runner.temp }}/LDOC"
             retention-days: 0
-      - name: Create Artifact (TAR)
-        run: |
-            chmod -c -R +rX "${{ runner.temp }}/LDOC/" | while read line; do
-              echo "::warning title=Invalid file permissions automatically fixed::$line"
-            done
-            tar \
-              --dereference --hard-dereference \
-              --directory "${{ runner.temp }}/LDOC/" \
-              -cvf "${{ runner.temp }}/LDOC_tar.tar" \
-              --exclude=.git \
-              --exclude=.github \
-              --force-local \
-              "."
-      - name: Upload Artifact (TAR)
-        uses: actions/upload-artifact@v6
-        with:
-          name: 'LDOC_tar'
-          path: "${{ runner.temp }}/LDOC_tar.tar"
-          retention-days: 0
 
   # Optional page deployment job
   deploy:
@@ -99,4 +80,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4.0.5 # or specific "vX.X.X" version tag for this action
         with:
-          artifact_name: 'LDOC_tar'
+          artifact_name: 'LDOC_zip'

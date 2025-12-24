@@ -1,0 +1,15 @@
+#content {
+    width: calc(100% - 16em);
+    min-width: 700px;
+}
+table.function_list td.name {
+    min-width: 350px;
+    max-width: 350px;
+}
+span.parameter {
+    font-size: 1.09em;
+}
+span.deprecated {
+    font-weight: bold;
+    color: #CD0000;
+}
