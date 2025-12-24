@@ -35,4 +35,4 @@ postprocess_html = function(html, module)
 end
 
 -- Silly hack to allow template file to access import
-import("_G").setmetatable(import("_G").debug.getfenv(import("_G").debug.getinfo(1, "f")), {__index = function(_, k) if k == "import" then return import end end})
+import("_G").setmetatable(import("_G").debug.getfenv(import("_G").debug.getinfo(1, "f").func), {__index = function(_, k) if k == "import" then return import end end})
