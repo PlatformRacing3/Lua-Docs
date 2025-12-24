@@ -43,20 +43,23 @@ postprocess_html = function(html, module)
 
     -- Custom modules sorting
     do
-        -- (1) Find modules within the HTML content
-        local modules_start = assert(html:find("<h2>Modules</h2>"), "Could not find Modules header!")
-        local ul_content_start = 1 + assert(select(2, html:find("<ul[^<>]*>"), modules_start), "Could not find Modules <ul> tag!") --- @type integer
+        -- (1) Find modules within the HTML content --
+
+        local modules_start = assert(html:find("<h2>Modules</h2>"), "Could not find Modules header!") --- @type integer
+        local ul_content_start = 1 + assert(select(2, html:find("<ul[^<>]*>", modules_start)), "Could not find Modules <ul> tag!") --- @type integer
         local ul_content_end = -1 + assert(html:find("</ul[^<>]*>", modules_start), "Could not find Modules </ul> tag!") --- @type integer
         local ul_content = html:sub(ul_content_start, ul_content_end)
 
-        -- (2) Extract modules from HTML content
+        -- (2) Extract modules from HTML content --
+
         local modules = {}
         for li_html in ul_content:gmatch("  <li>%s*.-%s*</li>") do
             local display_name = li_html:match("<[^<>]*>([^<>\r\n]-)</[^<>]*>") -- Captures the contents of the innermost HTML tag in case of nesting
             table.insert(modules, {html = li_html, name = display_name})
         end
 
-        -- (3) Sort the modules table
+        -- (3) Sort the modules table --
+
         table.sort(modules, function(a, b)
             if a.name == "Globals" then return true end
             if b.name == "Globals" then return false end
@@ -64,13 +67,15 @@ postprocess_html = function(html, module)
             return a.name:lower() < b.name:lower()
         end)
 
-        -- (4) Generate string from modules table
+        -- (4) Generate string from modules table --
+
         local new_ul_content = ""
         for _, v in ipairs(modules) do
             new_ul_content = new_ul_content .. v.html
         end
 
-        -- (5) Replace unsorted modules HTML with sorted modules HTML
+        -- (5) Replace unsorted modules HTML with sorted modules HTML --
+
         html = html:sub(1, ul_content_start - 1) .. new_ul_content .. html:sub(ul_content_end + 1)
     end
 
