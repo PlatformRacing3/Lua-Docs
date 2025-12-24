@@ -35,4 +35,4 @@ postprocess_html = function(html, module)
 end
 
 -- Silly hack to allow template file to access import
-import("setmetatable")(import("ldoc"), {__index = function(_, k) if k == "import" then return import end end})
+import("setmetatable")(_G, {__index = function(_, k) if k == "import" then return import end end})
