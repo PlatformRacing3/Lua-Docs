@@ -16,7 +16,7 @@
 #             local a_name, b_name = display_name(a):lower(), display_name(b):lower()
 #
 #             if a_name == "globals" then return true end
-#            if b_name == "globals" then return false end
+#             if b_name == "globals" then return false end
 #
 #             return a_name < b_name
 #         end)
