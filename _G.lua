@@ -218,7 +218,7 @@ GraphicsPathWinding = {
 --- GradientType enum.
 --- Defines the type of gradient fill.
 --- @see sprite.beginGradientFill
---- @see sprite.lineGradientStyle
+--- @see sprite.gradientLineStyle
 -- @table GradientType
 GradientType = {
 	LINEAR = "linear", -- Linear gradient fill. ("linear")
@@ -228,7 +228,7 @@ GradientType = {
 --- GradientSpreadMethod enum.
 --- Defines the spread method for gradient fills.
 --- @see sprite.beginGradientFill
---- @see sprite.lineGradientStyle
+--- @see sprite.gradientLineStyle
 -- @table GradientSpreadMethod
 GradientSpreadMethod = {
 	PAD = "pad", -- Pad spread method. ("pad")
@@ -284,7 +284,7 @@ JointStyle = {
 --- ColorInterpolationMethod enum.
 --- Defines the color space interpolation method for gradients.
 --- @see sprite.beginGradientFill
---- @see sprite.lineGradientStyle
+--- @see sprite.gradientLineStyle
 -- @table ColorInterpolationMethod
 ColorInterpolationMethod = {
 	LINEAR_RGB = "linearRGB", -- Linear RGB color space interpolation. ("linearRGB")

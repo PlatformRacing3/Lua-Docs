@@ -23,7 +23,7 @@ playersCount = 1
 playerCount = 1
 
 --- How many ticks have passed since the game started. Read-only.
---- Returns a game timer which calls `listener` every `interval` milliseconds up to `maxCount` times.
+elapsedTicks = 0
 
 --- How many milliseconds (in simulated game time) have passed since the game started. Read-only.
 elapsedMS = 0
@@ -115,7 +115,7 @@ end
 ---- for i, v in pairs(players) do
 ----     v.setmetadata("index", i)
 ---- end
---- @see @{_G.tovararg|tovararg}
+--- @see _G.tovararg
 --- @see remoteplayer
 function getAllPlayers()
 end

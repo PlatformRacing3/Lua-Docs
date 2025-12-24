@@ -106,7 +106,7 @@ function drawTextField(textfield, x, y, scaleX, scaleY, rotation)
 end
 
 --- Renders a given display object to the stamp using a given translation, scaling, and rotation. A display object can be a sprite, stamp, or text field.
---- @tparam stamp/sprite/textfield The display object to render to the stamp.
+--- @tparam stamp/sprite/textfield drawable The display object to render to the stamp.
 --- @tparam number x By how many pixels along the x-axis to move the display object when rendering to the stamp. By default 0.
 --- @tparam number y By how many pixels along the y-axis to move the display object when rendering to the stamp. By default 0.
 --- @tparam number scaleX By how much to scale the display object along the x-axis when rendering to the stamp. By default 1.
