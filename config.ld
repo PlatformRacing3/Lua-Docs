@@ -44,9 +44,9 @@ postprocess_html = function(html, module)
     do
         -- (1) Find modules within the HTML content
         local modules_start = assert(html:find("<h2>Modules</h2>"), "Could not find Modules header!")
-        local open_ul_start, open_ul_end = assert(html:find("<ul[^<>]*>", modules_start), "Could not find Modules <ul> start!")
-        local close_ul_start, close_ul_end = assert(html:find("</ul[^<>]*>", modules_start), "Could not find Modules </ul> end!")
-        local ul_content = html:sub(open_ul_start, close_ul_end)
+        local ul_content_start = 1 + assert(select(2, html:find("<ul[^<>]*>"), modules_start), "Could not find Modules <ul> tag!") --- @type integer
+        local ul_content_end = -1 + assert(html:find("</ul[^<>]*>", modules_start), "Could not find Modules </ul> tag!") --- @type integer
+        local ul_content = html:sub(ul_content_start, ul_content_end)
 
         -- (2) Extract modules from HTML content
         local modules = {}
@@ -64,13 +64,13 @@ postprocess_html = function(html, module)
         end)
 
         -- (4) Generate string from modules table
-        local modulesHTML = ""
+        local new_ul_content = ""
         for i, v in ipairs(modules) do
-            modulesHTML = modulesHTML .. v.html
+            new_ul_content = new_ul_content .. v.html
         end
 
         -- (5) Replace unsorted modules HTML with sorted modules HTML
-        html = html:sub(1, open_ul_end) .. modulesHTML .. html:sub(close_ul_start)
+        html = html:sub(1, ul_content_start - 1) .. new_ul_content .. html:sub(ul_content_end + 1)
     end
 
     return html
