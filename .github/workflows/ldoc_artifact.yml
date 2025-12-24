@@ -52,8 +52,8 @@ jobs:
       - name: Upload Artifact (ZIP)
         uses: actions/upload-artifact@v6
         with:
-            name: 'LDOC_zip'
-            path: "${{ runner.temp }}/LDOC"
+            name: 'PR3-Doc'
+            path: "${{ runner.temp }}/PR3-Doc"
             retention-days: 0
 
   # Optional page deployment job
@@ -80,4 +80,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4.0.5 # or specific "vX.X.X" version tag for this action
         with:
-          artifact_name: 'LDOC_zip'
+          artifact_name: 'PR3-Doc'
