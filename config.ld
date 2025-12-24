@@ -14,6 +14,14 @@ merge = true
 wrap = true
 sort_modules = false -- Custom sorting is implemented in postprocess_html
 
+---[[ Import required by LDocs ]]---
+
+assert = import("assert")
+table = import("table")
+ipairs = import("ipairs")
+
+------------------------------------
+
 --- Modifies the display name for a reference link.
 --- @param item string
 --- @param default_handler function

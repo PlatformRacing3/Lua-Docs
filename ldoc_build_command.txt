@@ -1,1 +1,1 @@
-ldoc "." -d "../PR3-Doc"
+ldoc "." -d "../PR3-Doc" --unsafe-no-sandbox
