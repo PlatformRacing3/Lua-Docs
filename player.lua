@@ -620,7 +620,7 @@ end
 ---     + !typename: (***string***) the full item name. (e.g. "lasergun", "bow", etc.)
 --- 
 --- @see giveitem
---- @see _G.totable
+--- @see Globals.totable
 function getitem()
 end
 
@@ -752,7 +752,7 @@ end
 --- @tparam int keycode The specified key that is being checked.
 --- @return Returns true if pressed, otherwise false.
 --- @usage local Zpressed = tolua(player.keypressed(keys.Z))
---- @see _G.keys
+--- @see Globals.keys
 function keypressed(keycode)
 end
 

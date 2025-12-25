@@ -71,11 +71,12 @@
 #   end
 # end
 
-# if not ldoc.single and module then -- reference back to project index
+# -- 'if' and 'end' are commented out to always show the index
+# -- if not ldoc.single and module then -- reference back to project index
 <ul>
-  <li><a href="../$(ldoc.output).html">Index</a></li>
+  <li><a href="../$(ldoc.output).html">Documentation</a></li>
 </ul>
-# end
+# -- end
 
 # --------- contents of module -------------
 # if module and not ldoc.no_summary and #module.items > 0 then

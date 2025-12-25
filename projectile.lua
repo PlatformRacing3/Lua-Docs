@@ -2,6 +2,6 @@
 ...
 
 --- The shooter.
---- May be either a @{_G.Player|Player} (which may also be a @{_G.LocalPlayer|LocalPlayer}) or nil.
---- @see _G.Player
+--- May be either a @{Globals.Player|Player} (which may also be a @{Globals.LocalPlayer|LocalPlayer}) or nil.
+--- @see Globals.Player
 shooter = nil
