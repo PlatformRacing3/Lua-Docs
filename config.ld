@@ -31,7 +31,7 @@ end
 --- Handles display name and link for Globals module @see / @{} references
 --- This may have to be modified in the future if we start having things be in subdirectories
 custom_see_handler("^Globals%.(.+)$", function(name)
-    local url = "../Globals.html"
+    local url = "./Globals.html"
 
     return name, url
 end)
