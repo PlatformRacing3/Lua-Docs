@@ -14,7 +14,7 @@ merge = true
 wrap = true
 sort_modules = false -- Custom sorting is implemented in postprocess_html
 
---- Modifies the display name for a reference link.
+--- Modifies the display name for a reference link (created via backticks).
 --- @param item string The item whose display name is being modified
 --- @param default_handler function The default display_name function
 --- @return string newName The new display name

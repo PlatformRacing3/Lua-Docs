@@ -56,6 +56,13 @@
 #
 #     return ipairs(modules)
 # end
+# 
+# -- Modify all see references to use custom display handler
+# if module and module.see then
+#   for see in iter(module.see) do
+#       see.label = ldoc.custom_display_name_handler(see.label, tostring)
+#   end
+# end
 
 <!-- Menu -->
 
