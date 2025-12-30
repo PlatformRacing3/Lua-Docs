@@ -4,8 +4,5 @@
     "Lua.workspace.ignoreDir": [
         ".vscode",
         "*.lua"
-    ],
-    "Lua.diagnostics.disable": [
-        "lowercase-global"
-    ],
+    ]
 }

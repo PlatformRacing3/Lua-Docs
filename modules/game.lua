@@ -158,7 +158,7 @@ end
 function newRealTimer(interval, maxCount, listener)
 end
 
---- Destroys all game timers created by `newTimer` or `newRealTimer`.
+--- Destroys all game timers created by @{newTimer} or @{newRealTimer}.
 --- @see timer
 function destroyAllTimers()
 end

@@ -12,7 +12,7 @@ tick = nil
 
 --- The event handler for key events, which fire when a key is pressed or released.
 --- Results are as defined here:
---- <https://airsdk.dev/reference/actionscript/3.0/flash/events/KeyboardEvent.html>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/events/KeyboardEvent.html>
 --- @usage player.keyEvent.addListener(function(event) -- chat out all event data for a keyEvent
 ----     local eventData = totable(event) 
 ----     player.chat(eventData.isKeyDown)
@@ -86,10 +86,10 @@ safex = 0
 --- The absolute y-position of the player's respawn location.
 safey = 0
 
---- The absolute x-position of the camera (top left corner; not affected by `fov`).
+--- The absolute x-position of the camera (top left corner; not affected by @{fov}).
 camerax = 0
 
---- The absolute y-position of the camera (top left corner; not affected by `fov`).
+--- The absolute y-position of the camera (top left corner; not affected by @{fov}).
 cameray = 0
 
 --- Defines how fast the camera does follow the player. Ranges from 0 to 1. 0 means the camera will not move at all.
@@ -221,7 +221,7 @@ end
 function newRealTimer(interval, maxCount, listener)
 end
 
---- Destroys all player timers created by `newTimer` and `newRealTimer`.
+--- Destroys all player timers created by @{newTimer} and @{newRealTimer}.
 --- @see timer
 function destroyAllTimers()
 end

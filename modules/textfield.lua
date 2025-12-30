@@ -46,11 +46,11 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the text field. Use BlendMode enum values. By default BlendMode.NORMAL.
+--- The blend mode of the text field. Use @{Globals.BlendMode} enum values. By default BlendMode.NORMAL.
 --- @see Globals.BlendMode
 blendMode = "normal"
 
---- Whether or not the text field was destroyed. Calling `destroy` sets this to true. Read-only.
+--- Whether or not the text field was destroyed. Calling @{destroy} sets this to true. Read-only.
 destroyed = false
 
 --- The text within the text field.
@@ -68,7 +68,7 @@ size = 14
 --- RGB color of the text.
 color = 0xFFFFFF
 
---- Text alignment mode. Use @{Globals.TextFormatAlign|TextFormatAlign} enum values. By default `TextFormatAlign.LEFT`.
+--- Text alignment mode. Use @{Globals.TextFormatAlign} enum values. By default @{Globals.TextFormatAlign.LEFT}.
 --- @see Globals.TextFormatAlign
 align = "left"
 
@@ -78,7 +78,7 @@ wordWrap = true
 --- Whether the text is underlined or not. By default false.
 underline = false
 
---- Text auto-sizing mode. Use @{Globals.TextFieldAutoSize|TextFieldAutoSize} enum values. By default `TextFieldAutoSize.NONE`.
+--- Text auto-sizing mode. Use @{Globals.TextFieldAutoSize} enum values. By default @{Globals.TextFieldAutoSize.NONE}.
 --- @see Globals.TextFieldAutoSize
 autoSize = "none"
 
@@ -86,12 +86,12 @@ autoSize = "none"
 function destroy()
 end
 
---- Returns the bounds of the text field as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself.
+--- Returns the bounds of the text field as a [Rectangle](https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Rectangle.html), relative to itself.
 --- @treturn Rectangle The bounds of the text field
 function getBounds()
 end
 
---- Returns the bounds of the text field as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself, excluding any strokes on shapes.
+--- Returns the bounds of the text field as a [Rectangle](https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Rectangle.html), relative to itself, excluding any strokes on shapes.
 --- @treturn Rectangle The bounds of the text field
 function getRect()
 end

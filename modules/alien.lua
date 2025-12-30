@@ -1,7 +1,7 @@
 --- Alien related variables and functions
 ...
 
---- Whether or not the alien exists in the level. Calling `remove` sets this to false. Read-only.
+--- Whether or not the alien exists in the level. Calling @{remove} sets this to false. Read-only.
 exists = true
 
 --- The absolute x-position of the alien.

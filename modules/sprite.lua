@@ -46,11 +46,11 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the sprite. Use @{Globals.BlendMode|BlendMode} enum values. By default `BlendMode.NORMAL`.
+--- The blend mode of the sprite. Use @{Globals.BlendMode} enum values. By default @{Globals.BlendMode.NORMAL}.
 --- @see Globals.BlendMode
 blendMode = "normal"
 
---- Whether or not the sprite was destroyed. Calling `destroy` sets this to true. Read-only.
+--- Whether or not the sprite was destroyed. Calling @{destroy} sets this to true. Read-only.
 destroyed = false
 
 --- The number of children the sprite has. By default 0. Read-only.
@@ -58,12 +58,12 @@ destroyed = false
 --- @see removeChild
 numChildren = 0
 
---- Returns the bounds of the sprite as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself.
+--- Returns the bounds of the sprite as a [Rectangle](https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Rectangle.html), relative to itself.
 --- @treturn Rectangle The bounds of the sprite
 function getBounds()
 end
 
---- Returns the bounds of the sprite as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself, excluding any strokes on shapes.
+--- Returns the bounds of the sprite as a [Rectangle](https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Rectangle.html), relative to itself, excluding any strokes on shapes.
 --- @treturn Rectangle The bounds of the sprite
 function getRect()
 end
@@ -84,14 +84,14 @@ end
 --- 
 --- To fully understand the parameters detailed below, please refer to Adobe's gradient fill and gradient box documentations: 
 --- 
---- <https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html#beginGradientFill()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html#beginGradientFill()>
 --- 
---- <https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html#createGradientBox()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html#createGradientBox()>
 --- @param colors An AS3 array of the ARGB values of the fill. The simplest way to provide these values is with the `0xAARRGGBB` hex format, where AA is the hex value from 0 - 255 for the alpha, RR for red, GG for green, and BB for blue.
 --- @param ratios An AS3 array of the color distribution ratios; valid values are 0-255. These values define the percentages of the width where the respective color is sampled at 100%. The value 0 represents the left position in the gradient box, and 255 represents the right position in the gradient box. Each value must be greater than the last.
 --- @param vars An AS3 object containing any optional parameters for the gradient fill. Valid options are:
 ---- 
----- * !type: (***string***) The type of gradient fill. Use GradientType.LINEAR or GradientType.RADIAL. By default GradientType.LINEAR.
+---- * !type: (***string***) The type of gradient fill. Use @{Globals.GradientType} enum values. By default @{Globals.GradientType.LINEAR}.
 ---- 
 ---- * !width: (***number***) The width of the gradient box. By default 127.
 ---- 
@@ -105,9 +105,9 @@ end
 ---- 
 ---- * !focalPointRatio: (***number***) A multiplier that controls the location of the focal point of the gradient. 0 means that the focal point is in the center. 1 means that the focal point is at one border of the gradient circle. -1 means that the focal point is at the other border of the gradient circle. A value less than -1 or greater than 1 is clamped to -1 or 1
 ---- 
----- * !spreadMethod: (***string***) Which spread method to use. Use GradientSpreadMethod.PAD, GradientSpreadMethod.REFLECT, or GradientSpreadMethod.REPEAT. By default GradientSpreadMethod.PAD.
+---- * !spreadMethod: (***string***) Which spread method to use. Use @{Globals.GradientSpreadMethod} enum values. By default @{Globals.GradientSpreadMethod.PAD}.
 ---- 
----- * !interpolationMethod: (***string***) Which color space interpolation method to use. Use ColorInterpolationMethod.RGB or ColorInterpolationMethod.LINEAR_RGB. By default ColorInterpolationMethod.RGB.
+---- * !interpolationMethod: (***string***) Which color space interpolation method to use. Use @{Globals.ColorInterpolationMethod} enum values. By default @{Globals.ColorInterpolationMethod.RGB}.
 ---- 
 --- @see endFill
 --- @see Globals.GradientType
@@ -127,9 +127,9 @@ end
 --- 
 --- To fully understand the parameters detailed below, please refer to Adobe's bitmap fill and matrix box documentations: 
 --- 
---- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Graphics.html#beginBitmapFill()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html#beginBitmapFill()>
 ---
---- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Matrix.html#createBox()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html#createBox()>
 --- 
 --- @tparam stamp stamp A stamp that will be used for the fill.
 --- @tparam boolean repeats Whether the fill repeats the bitmap or not.
@@ -162,30 +162,22 @@ end
 function endFill()
 end
 
---- Specifies a line style used for subsequent draw operations, such as `lineTo` and `drawCircle`.
+--- Specifies a line style used for subsequent draw operations, such as @{lineTo} and @{drawCircle}.
 --- 
 --- To fully understand the parameters detailed below, please refer to Adobe's line style documentation:
 --- 
---- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Graphics.html#lineStyle()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html#lineStyle()>
 --- @tparam int color The ARGB value of the line style. By default `0xFFFFFFFF`. The simplest way to provide this value is with the `0xAARRGGBB` hex format, where AA is the hex value from 0 - 255 for the alpha, RR for red, GG for green, and BB for blue.
 --- @tparam int thickness The thickness, in pixels, of the line style.
 --- @param vars An AS3 object containing any optional parameters for the line style. Valid options are:
 ---- 
 ---- * !pixelHinting: (***bool***) Whether or not draw operations should be hinted to full pixels. This works to reduce the blurriness of anti-aliasing by keeping line widths and curves aligned closer to exact pixel amounts.
 ---- 
----- * !scaleMode: (***string***) The scale mode of the line style. By default "normal". Valid options are:
-----     
-----     + !normal: Always scale the line thickness when the sprite is scaled. 
-----     
-----     + !none: Never scale the line thickness.
-----     
-----     + !vertical: Do not scale the line thickness if the sprite is scaled only vertically and not horizontally.
-----     
-----     + !horizontal: Do not scale the line thickness if the sprite is scaled only horizontally and not vertically.
+---- * !scaleMode: (***string***) The scale mode of the line style. Use @{Globals.LineScaleMode} enum values. By default @{Globals.LineScaleMode.NORMAL}.
 ---- 
----- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. Use @{Globals.CapsStyle|CapsStyle} enum values. By default `CapsStyle.ROUND`.
+---- * !caps: (***string***) The type of caps at the end of lines drawn with this line style. Use @{Globals.CapsStyle} enum values. By default @{Globals.CapsStyle.ROUND}.
 ---- 
----- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. Use @{Globals.JointStyle|JointStyle} enum values. By default `JointStyle.ROUND`. When using JointStyle.MITER, the length of miters is limited by the `miterLimit` parameter.
+---- * !joints: (***string***) The type of joint appearance at the angles formed by lines drawn with this line style. Use @{Globals.JointStyle} enum values. By default @{Globals.JointStyle.ROUND}. When using @{Globals.JointStyle.MITER}, the length of miters is limited by the `miterLimit` parameter.
 ---- 
 ---- * !miterLimit: (***int***) The maximum length, in pixels, of mitered joints used for the angles formed by lines drawn with this line style. By default 3. This value is clamped between 1 and 255.
 --- @see Globals.CapsStyle
@@ -197,19 +189,19 @@ end
 function lineStyle(color, thickness, vars)
 end
 
---- Specifies a gradient coloring for the line stroke used for subsequent draw operations, such as `lineTo` and `drawCircle`.
---- lineStyle must be called beforehand, with the desired line thickness and parameters.
+--- Specifies a gradient coloring for the line stroke used for subsequent draw operations, such as @{lineTo} and @{drawCircle}.
+--- @{lineStyle} must be called beforehand, with the desired line thickness and parameters.
 --- 
 --- To fully understand the parameters detailed below, please refer to Adobe's gradient line style and gradient box documentations: 
 --- 
---- <https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html#beginGradientFill()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html#beginGradientFill()>
 --- 
---- <https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html#createGradientBox()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html#createGradientBox()>
 --- @param colors An AS3 array of the ARGB values of the fill. The simplest way to provide these values is with the `0xAARRGGBB` hex format, where AA is the hex value from 0 - 255 for the alpha, RR for red, GG for green, and BB for blue.
 --- @param ratios An AS3 array of the color distribution ratios; valid values are 0-255. These values define the percentages of the width where the respective color is sampled at 100%. The value 0 represents the left position in the gradient box, and 255 represents the right position in the gradient box. Each value must be greater than the last.
 --- @param vars An AS3 object containing any optional parameters for the gradient fill. Valid options are:
 ---- 
----- * !type: (***string***) The type of gradient fill. Use GradientType.LINEAR or GradientType.RADIAL. By default GradientType.LINEAR.
+---- * !type: (***string***) The type of gradient fill. Use @{Globals.GradientType} enum values. By default @{Globals.GradientType.LINEAR}.
 ---- 
 ---- * !width: (***number***) The width of the gradient box. By default 127.
 ---- 
@@ -223,9 +215,9 @@ end
 ---- 
 ---- * !focalPointRatio: (***number***) A multiplier that controls the location of the focal point of the gradient. 0 means that the focal point is in the center. 1 means that the focal point is at one border of the gradient circle. -1 means that the focal point is at the other border of the gradient circle. A value less than -1 or greater than 1 is clamped to -1 or 1
 ---- 
----- * !spreadMethod: (***string***) Which spread method to use. Use GradientSpreadMethod.PAD, GradientSpreadMethod.REFLECT, or GradientSpreadMethod.REPEAT. By default GradientSpreadMethod.PAD.
+---- * !spreadMethod: (***string***) Which spread method to use. Use @{Globals.GradientSpreadMethod} enum values. By default @{Globals.GradientSpreadMethod.PAD}.
 ---- 
----- * !interpolationMethod: (***string***) Which color space interpolation method to use. Use ColorInterpolationMethod.RGB or ColorInterpolationMethod.LINEAR_RGB. By default ColorInterpolationMethod.RGB.
+---- * !interpolationMethod: (***string***) Which color space interpolation method to use. Use @{Globals.ColorInterpolationMethod} enum values. By default @{Globals.ColorInterpolationMethod.RGB}.
 ---- 
 --- @see endFill
 --- @see Globals.GradientType
@@ -242,14 +234,14 @@ function gradientLineStyle(colors, ratios, vars)
 end
 
 
---- Specifies a gradient coloring for the line stroke used for subsequent draw operations, such as `lineTo` and `drawCircle`.
---- lineStyle must be called beforehand, with the desired line thickness and parameters.
+--- Specifies a bitmap coloring for the line stroke used for subsequent draw operations, such as @{lineTo} and @{drawCircle}.
+--- @{lineStyle} must be called beforehand, with the desired line thickness and parameters.
 --- 
 --- To fully understand the parameters detailed below, please refer to Adobe's bitmap line style and matrix box documentations: 
 --- 
---- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Graphics.html#lineBitmapStyle()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html#lineBitmapStyle()>
 ---
---- <https://airsdk.dev/reference/actionscript/3.0/flash/geom/Matrix.html#createBox()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Matrix.html#createBox()>
 --- 
 --- @tparam stamp stamp A stamp that will be used for the line style.
 --- @tparam boolean repeats Whether the line style repeats the stamp or not.
@@ -280,7 +272,7 @@ end
 function bitmapLineStyle(stamp, repeats, smooth, vars)
 end
 
---- Sets the current drawing position used by `lineTo`, `curveTo`, and `cubicCurveTo` to the given coordinates.
+--- Sets the current drawing position used by @{lineTo}, @{curveTo}, and @{cubicCurveTo} to the given coordinates.
 --- @tparam number x The x-coordinate of the new drawing position.
 --- @tparam number y The y-coordinate of the new drawing position.
 --- @usage someSprite.lineTo(000, 100) -- Draw a line from (0, 0) to (0, 100)
@@ -327,11 +319,11 @@ end
 ---
 --- Can provide a significant performance boost over individual moveTo/lineTo/curveTo/cubicCurveTo calls.
 ---
---- This method behaves slightly differently from individual moveTo/lineTo/curveTo/cubicCurveTo calls, see Adobe's documentation.
+--- This method behaves slightly differently from individual @{moveTo}/@{lineTo}/@{curveTo}/@{cubicCurveTo} calls, see Adobe's documentation.
 ---
---- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Graphics.html#drawPath()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/display/Graphics.html#drawPath()>
 --- @tparam string commands A string containing all of the commands for the path, e.g "M 100 100 L 250.5 -130.221 L 300 300 L 100 100". A command string can be built with the GraphicsPathCommand helper.
---- @tparam string winding A string defining the winding for the path. Use GraphicsPathWinding.EVEN_ODD or GraphicsPathWinding.NON_ZERO. By default GraphicsPathWinding.EVEN_ODD.
+--- @tparam string winding A string defining the winding for the path. Use @{Globals.GraphicsPathWinding} enum values. By default @{Globals.GraphicsPathWinding.EVEN_ODD}.
 --- @see GraphicsPathCommand
 --- @see Globals.GraphicsPathWinding
 --- @usage local path = GraphicsPathCommand.new().moveTo(100,100).lineTo(250.5,-130.221).lineTo(300,300).lineTo(100,100).toString()
@@ -388,9 +380,9 @@ end
 --- 
 --- To fully understand the parameters detailed below, please refer to Adobe's text field and text format documentations: 
 --- 
---- <https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/text/TextField.html>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/text/TextField.html>
 --- 
---- <https://help.adobe.com/en_US/FlashPlatform/reference/actionscript/3/flash/text/TextFormat.html>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/text/TextFormat.html>
 --- @tparam string text The text to be drawn by the text field.
 --- @tparam number x The x-coordinate of the text field's top left point. By default 0.
 --- @tparam number y The y-coordinate of the text field's top left point. By default 0.
@@ -398,7 +390,7 @@ end
 --- @tparam int size The size, in pixels, of the text field. By default 14.
 --- @param vars An AS3 object containing any optional parameters for the gradient fill. Valid options are:
 ---- 
----- * !align: (***string***) The alignment of the text field. Use TextFormatAlign values (LEFT, RIGHT, CENTER, JUSTIFY, START, END). By default TextFormatAlign.LEFT.
+---- * !align: (***string***) The alignment of the text field. Use @{Globals.TextFormatAlign} enum values. By default @{Globals.TextFormatAlign.LEFT}.
 ---- 
 ---- * !bold: (***bool***) Whether or not the text should be emboldened. By default false.
 ---- 

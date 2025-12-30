@@ -31,8 +31,8 @@ end
 function cubicCurveTo(cx1, cy1, cx2, cy2, x, y)
 end
 
---- Returns a string suitable for use with the sprite drawPath() function.
---- @treturn string A command string, usable with the drawPath sprite function.
+--- Returns a string suitable for use with the sprite @{sprite.drawPath} function.
+--- @treturn string A command string, usable with the @{sprite.drawPath} sprite function.
 --- @see sprite
 function toString()
 end

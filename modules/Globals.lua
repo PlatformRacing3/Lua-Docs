@@ -60,7 +60,7 @@ function tovararg(value)
 end
 
 --- Checks if an object is an instance of a class.
---- @param object The object. tolua must be used for this parameter
+--- @param object The object. @{tolua} must be used for this parameter
 --- @param class The class.
 --- @treturn boolean Returns whether the object is an instance of the class.
 --- @see Projectile
@@ -315,6 +315,16 @@ BlendMode = {
 	SUBTRACT = "subtract" -- Subtracts the display object colors from the background colors. ("subtract")
 }
 
+--- LineScaleMode enum.
+--- Defines the scale mode for lines.
+--- @see sprite.lineStyle
+-- @table LineScaleMode
+LineScaleMode = {
+	HORIZONTAL = "horizontal", -- Scales the line thickness only horizontally. ("horizontal")
+	NONE = "none", -- Does not scale the line thickness. ("none")
+	NORMAL = "normal", -- Scales the line thickness normally. ("normal")
+	VERTICAL = "vertical" -- Scales the line thickness only vertically. ("vertical")
+}
 
 GraphicsPathCommand = {
 }

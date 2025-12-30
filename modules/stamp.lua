@@ -8,7 +8,7 @@ width = 1
 height = 1
 
 --- Controls whether or not the bitmap is smoothed when scaled or rotated.
---- <https://airsdk.dev/reference/actionscript/3.0/flash/display/Bitmap.html#Bitmap()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/display/Bitmap.html#Bitmap()>
 smoothing = false
 
 --- The x position, in pixels, of the stamp when it is the child of a sprite. By default 0.
@@ -56,19 +56,19 @@ greenOffset = 0
 --- A number value from -255 to 255 that is added to the alpha channel after it is multiplied by blueMultiplier. By default 0.
 blueOffset = 0
 
---- The blend mode of the stamp. Use @{Globals.BlendMode|BlendMode} enum values. By default `BlendMode.NORMAL`.
+--- The blend mode of the stamp. Use @{Globals.BlendMode} enum values. By default @{Globals.BlendMode.NORMAL}.
 --- @see Globals.BlendMode
 blendMode = "normal"
 
---- Whether or not the stamp was destroyed. Calling `destroy` sets this to true. Read-only.
+--- Whether or not the stamp was destroyed. Calling @{destroy} sets this to true. Read-only.
 destroyed = false
 
---- Returns the bounds of the stamp as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself.
+--- Returns the bounds of the stamp as a [Rectangle](https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Rectangle.html), relative to itself.
 --- @treturn Rectangle The bounds of the stamp
 function getBounds()
 end
 
---- Returns the bounds of the stamp as a [Rectangle](https://airsdk.dev/reference/actionscript/3.0/flash/geom/Rectangle.html), relative to itself, excluding any strokes on shapes.
+--- Returns the bounds of the stamp as a [Rectangle](https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/geom/Rectangle.html), relative to itself, excluding any strokes on shapes.
 --- @treturn Rectangle The bounds of the stamp
 function getRect()
 end
@@ -162,7 +162,7 @@ function noise(randomSeed, low, high, channelOptions, grayScale)
 end
 
 --- Fills the stamp with randomly generated perlin noise.
---- <https://airsdk.dev/reference/actionscript/3.0/flash/display/BitmapData.html#perlinNoise()>
+--- <https://docs.ruffle.rs/en_US/FlashPlatform/reference/actionscript/3/flash/display/BitmapData.html#perlinNoise>
 --- @tparam int baseX Frequency to use in the X direction.
 --- @tparam int baseY Frequency to use in the Y direction.
 --- @tparam int numOctaves Number of octaves to use for fractal noise. Higher numbers create greater detail, at the cost of more processing time.
