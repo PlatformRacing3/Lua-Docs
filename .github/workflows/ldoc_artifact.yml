@@ -48,7 +48,7 @@ jobs:
             luarocks install penlight
             luarocks install ldoc
       - name: Run LDoc
-        run: ldoc "${{ runner.temp }}/source/" -d "${{ runner.temp }}/PR3-Doc/" --unsafe_no_sandbox
+        run: ldoc . -c "${{ runner.temp }}/source/config.ld" --unsafe_no_sandbox
       - name: Upload Artifact (ZIP)
         uses: actions/upload-artifact@v6
         with:

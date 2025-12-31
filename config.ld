@@ -19,7 +19,7 @@ ldoc.title = "PR3R Lua Documentation"
 ldoc.full_description = "Platform Racing 3 is two-dimensional online racing game. Create your own levels and blocks, or play levels created by other players! Feature rich tools to make your vision come true! Draw amazing art or create unique consepts using different combinations of block types!"
 ldoc.format = "markdown"
 ldoc.output = "index"
-ldoc.dir = "../PR3-Doc/" -- This is relative to working directory from which LDoc is called, NOT the source directory LDoc is reading from
+ldoc.dir = "../PR3-Doc/"
 ldoc.ext = "html"
 
 ldoc.template = "template.ltp"
