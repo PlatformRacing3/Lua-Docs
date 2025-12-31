@@ -12,14 +12,14 @@ do
     _G.setfenv(1, _G) -- Sets the fenv to the global environment
 end
 
-ldoc.file = "modules/"
+ldoc.file = "./modules"
 
 ldoc.project = "PR3R Lua"
 ldoc.title = "PR3R Lua Documentation"
 ldoc.full_description = "Platform Racing 3 is two-dimensional online racing game. Create your own levels and blocks, or play levels created by other players! Feature rich tools to make your vision come true! Draw amazing art or create unique consepts using different combinations of block types!"
 ldoc.format = "markdown"
 ldoc.output = "index"
-ldoc.dir = "../PR3-Doc/"
+ldoc.dir = "../PR3-Doc"
 ldoc.ext = "html"
 
 ldoc.template = "template.ltp"
