@@ -30,9 +30,6 @@ ldoc.wrap = true
 ldoc.sort_modules = false -- Custom sorting is implemented in postprocess_html
 
 ldoc.custom_see_handler("^Globals%.([^%.]+)(.*)$", function(name, extra)
-    -- Ensure the Globals module exists
-    local module = assert(ldoc.modules.by_name["Globals"], "Unable to get Globals module!")
-    
     -- Construct the URL assuming the Globals module is a sibling file
     local url = ("Globals.%s#%s"):format(ldoc.ext or "html", name)
 
