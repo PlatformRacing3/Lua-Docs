@@ -12,7 +12,7 @@ do
     _G.setfenv(1, _G) -- Sets the fenv to the global environment
 end
 
-ldoc.file = "./modules/"
+ldoc.file = "modules/"
 
 ldoc.project = "PR3R Lua"
 ldoc.title = "PR3R Lua Documentation"
