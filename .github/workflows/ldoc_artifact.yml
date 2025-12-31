@@ -27,12 +27,8 @@ jobs:
         uses: actions/checkout@v6.0.1
       - name: Isolate LDoc source
         run: |
-            mkdir "${{ runner.temp }}/source/"
-            for f in ./* ; do
-                if [ -f "$f" ]; then
-                    cp "$f" "${{ runner.temp }}/source/$f"
-                fi
-            done
+            mkdir -p "${{ runner.temp }}/source/"
+            cp -r ./* "${{ runner.temp }}/source/"
       - name: Setup Pages
         if: ${{ inputs.deploy_page }} 
         uses: actions/configure-pages@v5
