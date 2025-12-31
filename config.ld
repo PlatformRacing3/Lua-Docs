@@ -22,7 +22,8 @@ ldoc.output = "index"
 ldoc.dir = "../PR3-Doc"
 ldoc.ext = "html"
 
-ldoc.template = "template.ltp"
+ldoc.template = "./" -- Template dir
+ldoc.templ = "template.ltp" -- Template filename
 ldoc.style = "!" -- Default css
 ldoc.custom_css = "custom_style.css" -- Append our custom css
 ldoc.merge = true
