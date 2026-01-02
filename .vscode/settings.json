@@ -2,7 +2,10 @@
     "Lua.runtime.version": "Lua 5.1",
     "Lua.diagnostics.ignoredFiles": "Disable",
     "Lua.workspace.ignoreDir": [
-        ".vscode",
-        "*.lua"
+        ".vscode/",
+        "modules/"
+    ],
+    "Lua.workspace.library": [
+        ".vscode/"
     ]
 }

@@ -1,10 +1,11 @@
---- The fenv in config.ld is the ldoc table
---- This implicit behavior is terrible design imo
---- + calling import() everywhere is annoying
---- + the IDE experience is miserable,
---- so this fixes all that
+-- The fenv in config.ld is the ldoc table
+-- This implicit behavior is terrible design imo
+-- + calling import() everywhere is annoying
+-- + the IDE experience is miserable,
+-- so this fixes all that
 
 do
+    --- @diagnostic disable-next-line: undefined-global
     local _G = import("_G") -- The unsandboxed global environment
     local ldoc = _G.getfenv(1) -- The fenv in config.ld is the ldoc table
 

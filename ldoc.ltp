@@ -29,6 +29,7 @@
 # do
 #     local _G = ldoc.import("_G")
 #     local fenv = _G.getfenv(1)
+#     fenv.module = fenv.module or false -- Prevents index page from mistakenly using lua module function as ldoc module parameter
 #     _G.setmetatable(fenv, {__index = _G})
 # end
 #
