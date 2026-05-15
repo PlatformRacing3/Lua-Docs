@@ -198,7 +198,7 @@ end
 --- @treturn timer The created timer object.
 --- @usage healthRegenTimer = player.newTimer(1000 * 6, -1, function()
 ----   -- Heals 1 health every 6 seconds (in simulated game time)
-----   player.health = tolua(player.health) + 1
+----   player.health = player.health + 1
 ---- end)
 function newTimer(interval, maxCount, listener)
 end
@@ -212,11 +212,11 @@ end
 --- @tparam int maxCount How many intervals will be completed. Set to -1 for infinite intervals.
 --- @tparam function listener The listener to be called every time an iteration is completed.
 --- @treturn timer The created timer object.
---- @usage startElapsedTicks = tolua(game.elapsedTicks)
+--- @usage startElapsedTicks = game.elapsedTicks
 ---- tpsCountTimer = player.newRealTimer(1000 * 6, -1, function()
 ----   -- Reports average ticks per second over a 6 second interval
-----   player.chat(tostring((tolua(game.elapsedTicks) - startElapsedTicks) / 6))
-----   startElapsedTicks = tolua(game.elapsedTicks)
+----   player.chat(tostring((game.elapsedTicks - startElapsedTicks) / 6))
+----   startElapsedTicks = game.elapsedTicks
 ---- end)
 function newRealTimer(interval, maxCount, listener)
 end
@@ -751,7 +751,7 @@ end
 --- Is the specified key currently pressed?
 --- @tparam int keycode The specified key that is being checked.
 --- @return Returns true if pressed, otherwise false.
---- @usage local Zpressed = tolua(player.keypressed(keys.Z))
+--- @usage local Zpressed = player.keypressed(keys.Z)
 --- @see @{utils.keys|keys}
 function keypressed(keycode)
 end
