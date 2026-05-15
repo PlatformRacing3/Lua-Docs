@@ -20,7 +20,7 @@ ypos = 0
 blockTags = 0
 
 --- A string describing a block's type.
---- @see @{BlockTypes}
+--- @see BlockTypes
 type = "active"
 
 --- The event handler for block break. This event may be cancelled to prevent the block from breaking.
