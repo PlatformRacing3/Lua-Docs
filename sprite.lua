@@ -234,11 +234,11 @@ end
 --- @usage local colors = toarray{0xFF0000FF, 0xFFFFFFFF} -- The gradient will be blue on the left and white on the right
 ---- local ratios = toarray{0.3 * 255, 1 * 255} -- The gradient will be fully blue up to 30% of the way through the fill, then transition from blue to white across the remaining 70%
 ---- someSprite.lineStyle(0,24)
----- someSprite.gradientLineStyle(colors, ratios, toobject{width = 100, height = 200, spreadMethod = GradientSpreadMethod.PAD}) -- The width and height of the gradient box will now match that of our next draw call.
+---- someSprite.lineGradientStyle(colors, ratios, toobject{width = 100, height = 200, spreadMethod = GradientSpreadMethod.PAD}) -- The width and height of the gradient box will now match that of our next draw call.
 ---- someSprite.drawRect(0, 0, 100, 200)
 ---- someSprite.endFill()
 ---- someLayer.drawSprite(someSprite)
-function gradientLineStyle(colors, ratios, vars)
+function lineGradientStyle(colors, ratios, vars)
 end
 
 
@@ -269,7 +269,7 @@ end
 --- @see endFill
 --- @usage
 ---- someSprite.lineStyle(0,24)
----- someSprite.beginBitmapFill(someStamp,true,true,toobject{
+---- someSprite.lineBitmapStyle(someStamp,true,true,toobject{
 ----     x = 5, y = 5,
 ----     scaleX = 3, scaleY = 3,
 ----     rotation = 45
@@ -277,7 +277,7 @@ end
 ---- someSprite.drawRect(0,0,255,255)
 ---- someSprite.endFill()
 ---- someLayer.drawSprite(someSprite)
-function bitmapLineStyle(stamp, repeats, smooth, vars)
+function lineBitmapStyle(stamp, repeats, smooth, vars)
 end
 
 --- Sets the current drawing position used by `lineTo`, `curveTo`, and `cubicCurveTo` to the given coordinates.
