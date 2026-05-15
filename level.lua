@@ -16,7 +16,7 @@ maxY = 0
 --- Finds a block in the specific coordinates.
 --- @tparam int x The absolute x position.
 --- @tparam int y The absolute y position.
---- @treturn block Returns the found block, or nil if not found.
+--- @treturn block Returns the found block, or safe null if not found.
 function getBlockAt(x, y)
 end
 
@@ -25,7 +25,7 @@ end
 --- @see @{utils.totable|totable}
 --- @usage local blocks = totable(game.level.getAllBlocks()) 
 ---- for i, v in pairs(blocks) do
-----     v.setmetatable("index", i)
+----     v.setmetadata("index", i)
 ---- end
 function getAllBlocks()
 end
