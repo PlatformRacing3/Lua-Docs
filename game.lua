@@ -45,8 +45,8 @@ _METADATA = {}
 ----     lock = event.acquireLock()
 ----     
 ----     game.requestUserData(function(data, error)
-----         data = tolua(data)
-----         error = tolua(error)
+----         data = data
+----         error = error
 ----         -- Do something here
 ----         lock.dispose()
 ----     end)
@@ -73,8 +73,8 @@ enterFrame = nil
 ---
 --- tolua method must be used for every variable you get from the gameEvent.
 --- @usage game.gameEvent.addListener(function(event)
-----     local data = tolua(event.data)
-----     local sender = tolua(event.source)
+----     local data = event.data
+----     local sender = event.source
 ----     -- Do something here
 ---- end)
 gameEvent = nil
@@ -86,8 +86,8 @@ gameEvent = nil
 ---- end)
 playerRemoved = nil
 
---- Returns a new lua-side RNG object (tolua not needed), seeded by the given seed, or a generated client seed is none is given.
---- int seed (optional) An optional number input to set the seed with. If none is given, a client-generated seed is used.
+--- Returns a new lua-side RNG object, seeded by the given seed, or a generated client seed is none is given.
+--- @tparam int seed (optional) An optional number input to set the seed with. If none is given, a client-generated seed is used.
 --- @treturn RNG The new RNG object.
 --- @usage local rng = game.newRNG(51832591)
 --- @see RNG
@@ -132,7 +132,7 @@ end
 --- @see timer
 --- @usage alienSpawnTimer = game.newTimer(1000 * 10, -1, function()
 ----     -- Spawns a new alien every 10 seconds (in simulated game time)
-----     game.level.newAlien(1, tolua(game.elapsedMS), toobject{})
+----     game.level.newAlien(1, game.elapsedMS, toobject{})
 ---- end)
 function newTimer(interval, maxCount, listener)
 end
@@ -148,11 +148,11 @@ end
 --- @treturn timer The created timer object.
 --- @see timer
 --- @usage playerDiedTimer = game.newRealTimer(100, -1, function()
-----     if (not player) or (tolua(player.health) > 0) then
+----     if (not player) or (player.health > 0) then
 ----         return
 ----     end
 ----     
-----     player.chat("You died around " .. (tolua(playerDiedTimer.elapsedMS) / 1000) .. " seconds after the timer started!")
+----     player.chat("You died around " .. (playerDiedTimer.elapsedMS / 1000) .. " seconds after the timer started!")
 ----     playerDiedTimer.destroy()
 ---- end)
 function newRealTimer(interval, maxCount, listener)
@@ -169,15 +169,14 @@ end
 --- This is an asynchronous method; it will not pause the script while the request is processing.
 --- Instead, it will later run the given callback function once the request has completed or failed.
 ---
---- tolua method must be used for every variable you get from the userdata, as well as for the error message.
 --- @tparam function callback The function that will be called once the request has completed or failed.
 --- @usage game.requestUserData(function(data, error)
-----     if tolua(error) ~= nil then
-----         player.chat("Error loading user data: " .. tostring(tolua(error)), 0xFF0000)
+----     if error ~= nil then
+----         player.chat("Error loading user data: " .. tostring(error), 0xFF0000)
 ----     else
-----         player.speed = tolua(data.speed)
-----         player.accel = tolua(data.accel)
-----         player.jump = tolua(data.jump)
+----         player.speed = data.speed
+----         player.accel = data.accel
+----         player.jump = data.jump
 ----     end
 ---- end)
 --- @see saveUserData
@@ -190,18 +189,18 @@ end
 --- Instead, it will later run the given callback function once the request has completed or failed.
 ---
 --- toobject method must be used for the userdata if it is a table.
---- tolua method must be used for the error message.
+--- Buffer data cannot be sent over the network currently, it must be converted to a string with the BufferUtils methods.
 --- @param userdata The userdata for the level that will be saved to the server.
 --- @tparam function callback The function that will be called once the request has completed or failed.
 --- @usage local userdata = {
-----     speed = tolua(player.speed),
-----     accel = tolua(player.accel),
-----     jump = tolua(player.jump)
+----     speed = player.speed,
+----     accel = player.accel,
+----     jump = player.jump
 ---- }
 ----     
 ---- game.saveUserData(toobject(userdata), function(error)
-----     if tolua(error) ~= nil then
-----         player.chat("Error saving user data: " .. tostring(tolua(error)), 0xFF0000)
+----     if error ~= nil then
+----         player.chat("Error saving user data: " .. tostring(error), 0xFF0000)
 ----     end
 ---- end)
 --- @see requestUserData
