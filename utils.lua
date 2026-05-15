@@ -317,45 +317,6 @@ BlendMode = {
 	SUBTRACT = "subtract" -- Subtracts the display object colors from the background colors. ("subtract")
 }
 
-BlockTypes = {
-	IMPERVIOUS = "impervious", -- Impervious block type. ("impervious")
-	WEAK = "weak", -- Weak block type. ("weak")
-	ACTIVE = "active", -- Active block type. ("active")
-	START = "start", -- Start block type. ("start")
-	INACTIVE = "inactive", -- Inactive block type. ("inactive")
-	CHANGE = "change", -- Change block type. ("change")
-	MOVE = "move", -- Move block type. ("move")
-	WATER = "water", -- Water block type. ("water")
-	REACTOR = "reactor", -- Reactor block type. ("reactor")
-	GENERATOR = "generator", -- Generator block type. ("generator")
-	INACTIVE_LUA = "lua inactive", -- Inactive lua block type. ("lua inactive")
-	WATER_LUA = "lua water" -- Water lua block type. ("lua water")
-}
-
---- Checks if a block type string is of an active block type.
---- @param type The block type string
---- @treturn boolean Returns whether the block type string is of an active block type.
---- @usage isActive = BlockTypes.isActive(block.type)
-function BlockTypes.isActive(type)
-
-end
-
---- Checks if a block type string is of an inactive block type.
---- @param type The block type string
---- @treturn boolean Returns whether the block type string is of an inactive block type.
---- @usage isInactive = BlockTypes.isInactive(block.type)
-function BlockTypes.isInactive(type)
-
-end
-
---- Checks if a block type string is of a water block type.
---- @param type The block type string
---- @treturn boolean Returns whether the block type string is of a water block type.
---- @usage isWater = BlockTypes.isWater(block.type)
-function BlockTypes.isWater(type)
-
-end
-
 
 GraphicsPathCommand = {
 }
