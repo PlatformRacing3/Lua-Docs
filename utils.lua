@@ -19,14 +19,16 @@ Player = nil
 --- @see instanceof
 LocalPlayer = nil
 
---- Converts game value to Lua. This allows the modification of given value.
+--- Converts safe null values to nil. Leaves all other values unchanged.
 --- @param value The value to convert.
---- @return Lua type of the value.
---- @usage player.speed = tolua(player.speed) + 10
+--- @return A value
+--- @usage if tolua(game.level.getBlockAt(3,3)) then
+----     player.chat("There is a block at 3,3")
+---- end
 function tolua(value)
 end
 
---- Converts game object / game array to Lua. This allows iteration over its fields.
+--- Converts game object / game array to a lua table. This allows use of the Lua table library.
 --- 
 --- The Lua table is a copy of the original game data. Therefore, modifications made to the Lua table will not affect the original object / array.
 --- @param value The value to convert.
@@ -314,6 +316,45 @@ BlendMode = {
 	SHADER = "shader", -- Uses a shader to define the blend. ("shader")
 	SUBTRACT = "subtract" -- Subtracts the display object colors from the background colors. ("subtract")
 }
+
+BlockTypes = {
+	IMPERVIOUS = "impervious", -- Impervious block type. ("impervious")
+	WEAK = "weak", -- Weak block type. ("weak")
+	ACTIVE = "active", -- Active block type. ("active")
+	START = "start", -- Start block type. ("start")
+	INACTIVE = "inactive", -- Inactive block type. ("inactive")
+	CHANGE = "change", -- Change block type. ("change")
+	MOVE = "move", -- Move block type. ("move")
+	WATER = "water", -- Water block type. ("water")
+	REACTOR = "reactor", -- Reactor block type. ("reactor")
+	GENERATOR = "generator", -- Generator block type. ("generator")
+	INACTIVE_LUA = "lua inactive", -- Inactive lua block type. ("lua inactive")
+	WATER_LUA = "lua water" -- Water lua block type. ("lua water")
+}
+
+--- Checks if a block type string is of an active block type.
+--- @param type The block type string
+--- @treturn boolean Returns whether the block type string is of an active block type.
+--- @usage isActive = BlockTypes.isActive(block.type)
+function BlockTypes.isActive(type)
+
+end
+
+--- Checks if a block type string is of an inactive block type.
+--- @param type The block type string
+--- @treturn boolean Returns whether the block type string is of an inactive block type.
+--- @usage isInactive = BlockTypes.isInactive(block.type)
+function BlockTypes.isInactive(type)
+
+end
+
+--- Checks if a block type string is of a water block type.
+--- @param type The block type string
+--- @treturn boolean Returns whether the block type string is of a water block type.
+--- @usage isWater = BlockTypes.isWater(block.type)
+function BlockTypes.isWater(type)
+
+end
 
 
 GraphicsPathCommand = {
