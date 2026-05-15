@@ -17,7 +17,7 @@ xpos = 0
 ypos = 0
 
 --- An array containing all of a block's block tags. The tags themselves are strings.
-blockTags = {}
+blockTags = 0
 
 --- A string describing a block's type.
 --- @see @{utils.BlockTypes|BlockTypes}
