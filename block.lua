@@ -166,7 +166,7 @@ end
 --- @tparam int x How many blocks to the right the wanted block is?
 --- @tparam int y How many blocks downwards the wanted block is?
 --- @tparam boolean keepPlayerReference Is the player reference kept? By default false.
---- @treturn block The found block as an object. Returns nil if a block isn't found.
+--- @treturn block The found block as an object. Returns safe null if a block isn't found.
 --- @usage block.getblock(0,-1).shatter()
 function getblock(x, y, keepPlayerReference)
 end
