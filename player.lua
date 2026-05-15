@@ -609,7 +609,7 @@ end
 --- @usage local item = totable(player.getitem())
 ---- local item_name = item.typename
 ---- local item_ammo = item.ammo
---- @return Returns the item as an AS3 Object, with each key being the property name and each value being the property's value.
+--- @return Returns the item as an AS3 Object, with each key being the property name and each value being the property's value. If the player is not holding an item, returns safe null.
 --- 
 ---### Fields ###
 --- 
