@@ -134,7 +134,7 @@ function setRect(x, y, width, height, color)
 end
 
 --- Sets the ARGB values (alpha and color) of the pixels within the given rectangle, based on a string input.
---- @tparam string hexARGB A string containing ARGB data for each pixel in the hexadecimal format (e.g "FF808080FF000000" for the first pixel to be gray and the second pixel to be black)
+--- @param data Either a string containing ARGB data for each pixel in the hexadecimal format (e.g "FF808080FF000000" for the first pixel to be gray and the second pixel to be black), or a buffer containing ARGB data for each pixel.
 --- @tparam int x The x-coordinate of the top left corner of the rectangle. 0 by default.
 --- @tparam int y The y-coordinate of the top left corner of the rectangle. 0 by default.
 --- @tparam int width The width of the rectangle. Stamp width by default.
@@ -148,8 +148,29 @@ end
 ----     end
 ---- end
 ---- someStamp.setPixels(table.concat(strBuff),0,0,64,64) -- Set each pixel to a be a fully opaque random color
-function setPixels(hexARGB, x, y, width, height)
+function setPixels(data, x, y, width, height)
 end
+
+--- Retrieves the ARGB value (alpha and color) of the pixel at the given coordinate.
+--- Note that flash stores the pixels as premultiplied color values, which may cause loss of precision. All stamp methods take and return unmultiplied values.
+--- @tparam int x The x-coordinate of the pixel. 0 by default.
+--- @tparam int y The y-coordinate of the pixel. 0 by default.
+--- @treturn int The ARGB value of the pixel. 
+--- @usage local pixelColor = someStamp.getPixel(10, 10) -- Retrieves the color of the pixel at (10, 10)
+function getPixel(x, y, color)
+end
+
+--- Retrieves the ARGB values (alpha and color) of the pixels within the given rectangle, returning it in a buffer.
+--- Note that flash stores the pixels as premultiplied color values, which may cause loss of precision. All stamp methods take and return unmultiplied values.
+--- @tparam int x The x-coordinate of the top left corner of the rectangle. 0 by default.
+--- @tparam int y The y-coordinate of the top left corner of the rectangle. 0 by default.
+--- @tparam int width The width of the rectangle. Stamp width by default.
+--- @tparam int height The height of the rectangle. Stamp height by default.
+--- @treturn buffer A buffer containing the ARGB data of the pixels in the rectangle.
+--- @usage local pixelData = someStamp.getPixels(12,12,24,24) -- Retrieves the pixel data from the rectangle
+function getPixels(x, y, width, height)
+end
+
 
 --- Fills the stamp with randomly generated noise
 --- @tparam int randomSeed The seed to use for random numbers.
