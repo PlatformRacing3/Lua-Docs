@@ -16,6 +16,13 @@ xpos = 0
 --- The absolute y-position of the block.
 ypos = 0
 
+--- An array containing all of a block's block tags. The tags themselves are strings.
+blockTags = 0
+
+--- A string describing a block's type.
+--- @see BlockTypes
+type = "active"
+
 --- The event handler for block break. This event may be cancelled to prevent the block from breaking.
 --- 
 --- Provides the broken block, the side from which it was broken, and the reason;
@@ -25,13 +32,13 @@ ypos = 0
 --- @usage game.level.getBlockAt(5, 7).onBreak.addListener(function(event)
 ----     event.cancelled = true --Prevents the block from breaking
 ----     
-----     local block = tolua(event.block)
-----     local side = tolua(event.side)
-----     local reason = tolua(event.reason)
+----     local block = event.block
+----     local side = event.side
+----     local reason = event.reason
 ----     
-----     if tolua(instanceof(reason, Projectile)) then --Checks if an item was used to break the block
-----         local shooter = tolua(reason.shooter)
-----         if tolua(instanceof(shooter, LocalPlayer)) then --Checks if the shooter is the local player
+----     if instanceof(reason, Projectile) then --Checks if an item was used to break the block
+----         local shooter = reason.shooter
+----         if instanceof(shooter, LocalPlayer) then --Checks if the shooter is the local player
 ----             shooter.hurt()
 ----         end
 ----     end
@@ -150,7 +157,7 @@ end
 
 --- Returns the block's texture as a lua stamp.
 --- The texture is the block's raw texture, not accounting for effects such as vanishing, freezing, dye, etc.
---- @usage local stamp = tolua(block.getStamp())
+--- @usage local stamp = block.getStamp()
 --- @treturn stamp The block's texture, or nil if the player has backgrounds disabled in their settings.
 function getStamp()
 end
@@ -159,7 +166,7 @@ end
 --- @tparam int x How many blocks to the right the wanted block is?
 --- @tparam int y How many blocks downwards the wanted block is?
 --- @tparam boolean keepPlayerReference Is the player reference kept? By default false.
---- @treturn block The found block as an object. Returns nil if a block isn't found.
+--- @treturn block The found block as an object. Returns safe null if a block isn't found.
 --- @usage block.getblock(0,-1).shatter()
 function getblock(x, y, keepPlayerReference)
 end
@@ -179,4 +186,13 @@ end
 --- @usage block.getmetadata("coins", 0)
 --- @usage block.getmetadata("block name", "unnamed")
 function getmetadata(key, defaultValue)
+end
+
+--- Returns the first matching block tag, or nil if none is found
+--- @tparam string tag The tag to search for
+--- @tparam boolean isExact If true, only search for tags that match exactly. Otherwise, matches with any tag that contains the given string. True by default
+--- @return Returns the first matching block tag, or nil if none is found.
+--- @usage if block.searchTag("awesome", true) then player.chat("Awesome!") end
+--- @usage local startTag = block.searchTag("start", false)
+function searchTag(tag, isExact)
 end

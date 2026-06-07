@@ -25,6 +25,19 @@ tick = nil
 --- @see eventlistener
 keyEvent = nil
 
+--- The event handler for mouse events, which fire when the left mouse button is pressed or released.
+--- event.buttonDown indicates whether it is a press or release.
+--- event.clickCount indicates whether a click is part of a multiple-click sequence (e.g a double click).
+--- event.mouseX and event.mouseY follow the same conventions as player.mousex and player.mousey
+--- @usage player.keyEvent.addListener(function(evt) -- chat out all event data for a keyEvent
+----   player.chat("buttonDown: " .. tostring(evt.buttonDown))
+----   player.chat("clickCount: " .. evt.clickCount)
+----   player.chat("mouseX: " .. evt.mouseX) -- Follows player.mousex and player.mousey conventions
+----   player.chat("mouseY: " .. evt.mouseY)
+---- end)
+--- @see eventlistener
+mouseEvent = nil
+
 --- Player's current health. The player is killed if it goes to zero or below.
 health = 5
 
@@ -55,6 +68,9 @@ gravity = 1
 
 --- Affects how far can you see (zoom). Greater values decrease your view size.
 fov = 1
+
+--- The actual FOV after accounting for all effects. Read-only.
+effectiveFOV
 
 --- Player's current horizontal velocity. Ranges from -1 to 1.
 xvelocity = 0
@@ -198,7 +214,7 @@ end
 --- @treturn timer The created timer object.
 --- @usage healthRegenTimer = player.newTimer(1000 * 6, -1, function()
 ----   -- Heals 1 health every 6 seconds (in simulated game time)
-----   player.health = tolua(player.health) + 1
+----   player.health = player.health + 1
 ---- end)
 function newTimer(interval, maxCount, listener)
 end
@@ -212,11 +228,11 @@ end
 --- @tparam int maxCount How many intervals will be completed. Set to -1 for infinite intervals.
 --- @tparam function listener The listener to be called every time an iteration is completed.
 --- @treturn timer The created timer object.
---- @usage startElapsedTicks = tolua(game.elapsedTicks)
+--- @usage startElapsedTicks = game.elapsedTicks
 ---- tpsCountTimer = player.newRealTimer(1000 * 6, -1, function()
 ----   -- Reports average ticks per second over a 6 second interval
-----   player.chat(tostring((tolua(game.elapsedTicks) - startElapsedTicks) / 6))
-----   startElapsedTicks = tolua(game.elapsedTicks)
+----   player.chat(tostring((game.elapsedTicks - startElapsedTicks) / 6))
+----   startElapsedTicks = game.elapsedTicks
 ---- end)
 function newRealTimer(interval, maxCount, listener)
 end
@@ -238,6 +254,20 @@ end
 --- @usage player.chat('hello', 0x1D5497)
 --- @usage player.chat('hello', 1922199)
 function chat(message, color)
+end
+
+
+--- Sends an alert popup to the player. The popup has a text box that the player can use for input.
+--- @tparam string message The event data to send.
+--- @tparam function callback The function called when the player closes the popup.
+--- @usage  player.prompt("Enter a string", function(str, err)
+----   if err then 
+----     player.alert("Error: " .. err) -- this basically just indicates that alerts are disabled.
+----   else
+----     player.alert("Your string was \"" .. str .. "\".")
+----   end
+---- end)
+function prompt(message, callback)
 end
 
 --- Teleports the player to the latest 'safe' block.
@@ -609,7 +639,7 @@ end
 --- @usage local item = totable(player.getitem())
 ---- local item_name = item.typename
 ---- local item_ammo = item.ammo
---- @return Returns the item as an AS3 Object, with each key being the property name and each value being the property's value.
+--- @return Returns the item as an AS3 Object, with each key being the property name and each value being the property's value. If the player is not holding an item, returns safe null.
 --- 
 ---### Fields ###
 --- 
@@ -751,7 +781,7 @@ end
 --- Is the specified key currently pressed?
 --- @tparam int keycode The specified key that is being checked.
 --- @return Returns true if pressed, otherwise false.
---- @usage local Zpressed = tolua(player.keypressed(keys.Z))
+--- @usage local Zpressed = player.keypressed(keys.Z)
 --- @see @{utils.keys|keys}
 function keypressed(keycode)
 end

@@ -16,12 +16,12 @@ end
 
 --- Functions the same as math.randomseed(seed), but affecting the RNG object's state.
 --- Sets the pseudo-random generator's seed: equal seeds produce equal sequences of numbers.
---- @tparam int seed (optional) An optional number input to set the seed with. If none is given, a client-generated seed is used.
+--- @tparam number seed (optional) An optional number input to set the seed with. If none is given, a client-generated seed is used.
 --- @usage RNG.randomseed(151260123)
 function randomseed(seed)
 end
 
---- Returns the RNG object's seed.
---- @treturn int The RNG object's seed.
+--- Returns the last number the RNG object was seeded with
+--- @treturn number The RNG object's seed.
 function getseed()
 end

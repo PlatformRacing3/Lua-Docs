@@ -19,14 +19,16 @@ Player = nil
 --- @see instanceof
 LocalPlayer = nil
 
---- Converts game value to Lua. This allows the modification of given value.
+--- Converts safe null values to nil. Leaves all other values unchanged.
 --- @param value The value to convert.
---- @return Lua type of the value.
---- @usage player.speed = tolua(player.speed) + 10
+--- @return A value
+--- @usage if tolua(game.level.getBlockAt(3,3)) then
+----     player.chat("There is a block at 3,3")
+---- end
 function tolua(value)
 end
 
---- Converts game object / game array to Lua. This allows iteration over its fields.
+--- Converts game object / game array to a lua table. This allows use of the Lua table library.
 --- 
 --- The Lua table is a copy of the original game data. Therefore, modifications made to the Lua table will not affect the original object / array.
 --- @param value The value to convert.
@@ -322,4 +324,44 @@ GraphicsPathCommand = {
 --- Creates a GradientPathCommand helper, for use with drawPath.
 --- @see GraphicsPathCommand
 function GraphicsPathCommand.new()
+end
+
+
+BufferUtils = {
+}
+
+--- Returns a compressed version of the given buffer.
+--- @tparam buffer buf The buffer to compress
+--- @treturn buffer A buffer containing the compressed data.
+function BufferUtils.compress(buf)
+end
+
+--- Returns a decompressed version of the given buffer.
+--- @tparam buffer buf The compressed buffer
+--- @treturn buffer A buffer containing the decompressed data.
+function BufferUtils.decompress(buf)
+end
+
+--- Converts a given buffer to base64.
+--- @tparam buffer buf The buffer to convert
+--- @treturn string A base64 string containing the buffer data.
+function BufferUtils.toBase64(buf)
+end
+
+--- Converts a base64 string to a buffer.
+--- @tparam string str A base64 string
+--- @treturn buffer A buffer containing the data.
+function BufferUtils.fromBase64(str)
+end
+
+--- Converts a given buffer to hexadecimal.
+--- @tparam buffer buf The buffer to convert
+--- @treturn string A hex string containing the buffer data.
+function BufferUtils.toHex(buf)
+end
+
+--- Converts a hex string to a buffer.
+--- @tparam string str A hex string
+--- @treturn buffer A buffer containing the data.
+function BufferUtils.fromHex(str)
 end

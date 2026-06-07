@@ -16,7 +16,7 @@ maxY = 0
 --- Finds a block in the specific coordinates.
 --- @tparam int x The absolute x position.
 --- @tparam int y The absolute y position.
---- @treturn block Returns the found block, or nil if not found.
+--- @treturn block Returns the found block, or safe null if not found.
 function getBlockAt(x, y)
 end
 
@@ -25,7 +25,7 @@ end
 --- @see @{utils.totable|totable}
 --- @usage local blocks = totable(game.level.getAllBlocks()) 
 ---- for i, v in pairs(blocks) do
-----     v.setmetatable("index", i)
+----     v.setmetadata("index", i)
 ---- end
 function getAllBlocks()
 end
@@ -58,7 +58,7 @@ end
 --- @tparam int layerNum The layerNum of the art layer (equivalent to the ">" icon in Level Editor). By default 1. Greater layerNum layers are drawn above lesser layerNum layers, regardless of layer depth. layerNums of 2 or greater draw above blocks. 3 or greater draws above players, hats, projectiles, and other visual effects.
 --- @treturn artlayer The new art layer, or nil if the player has backgrounds disabled in their settings.
 --- @see artlayer
---- @usage local layer = tolua(game.level.newArtLayer(1, 3))
+--- @usage local layer = game.level.newArtLayer(1, 3)
 ---- if layer then
 ----     layer.drawStamp(someStamp)
 ---- end
@@ -80,7 +80,7 @@ end
 --- @tparam boolean smoothing Whether the stamp will be smoothed when scaled and rotated or not. By default false.
 --- @treturn stamp The new stamp, or nil if the player has backgrounds disabled in their settings.
 --- @see stamp
---- @usage local stamp = tolua(game.level.newStamp(500, 500))
+--- @usage local stamp = game.level.newStamp(500, 500)
 ---- if stamp then
 ----     stamp.setRect(0, 0, 500, 500, 0xFF000000)
 ----     someLayer.drawStamp(stamp)
@@ -99,7 +99,7 @@ end
 --- A sprite may also be set as the "parent" of other display objects, meaning that they will also be rendered whenever the sprite is rendered to an art layer, and with the same transformations as the sprite.
 --- @treturn sprite The new sprite, or nil if the player has backgrounds disabled in their settings.
 --- @see sprite
---- @usage local sprite = tolua(game.level.newSprite())
+--- @usage local sprite = game.level.newSprite()
 ---- if sprite then
 ----     sprite.beginFill(0xFF000000) -- Draw everything with a solid, fully opaque black.
 ----     sprite.drawCircle(0, 0, 250)
@@ -122,11 +122,27 @@ end
 --- @param vars An AS3 object containing other variables to provide to the text field, see the text field page for reference.
 --- @treturn textfield The new text field, or nil if the player has backgrounds disabled in their settings.
 --- @see textfield
---- @usage local textField = tolua(game.level.newTextField("Awesome Text", 24, 0x80FFCC))
+--- @usage local textField = game.level.newTextField("Awesome Text", 24, 0x80FFCC)
 ---- someLayer.drawTextField(text)
 function newTextField(text, size, color, vars)
 end
 
 --- Destroys all Lua-created text fields. Does not undraw any text fields already rendered to any existing art layers or stamps.
 function destroyAllTextFields()
+end
+
+--- Creates a (client-sided) `vectorlayer`, which can have display objects added to it. This function fails and returns nil if the player has backgrounds disabled in their settings.
+--- @tparam float depth The depth of the vector layer. By default 1.
+--- @tparam int layerNum The layerNum of the vector layer (equivalent to the ">" icon in Level Editor). By default 1. Greater layerNum layers are drawn above lesser layerNum layers, regardless of layer depth. layerNums of 2 or greater draw above blocks. 3 or greater draws above players, hats, projectiles, and other visual effects.
+--- @treturn vectorlayer The new vector layer, or nil if the player has backgrounds disabled in their settings.
+--- @see vectorlayer
+--- @usage local layer = game.level.newVectorLayer(1, 3)
+---- if layer then
+----     layer.addChild(someStamp)
+---- end
+function newVectorLayer(depth, layerNum)
+end
+
+--- Destroys all Lua-created vector layers.
+function destroyAllVectorLayers()
 end
