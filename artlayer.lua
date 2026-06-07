@@ -16,6 +16,18 @@ alpha = 1
 --- @see utils.BlendMode
 blendMode = "normal"
 
+--- A number value that is multiplied with the red color channel when drawn. By default 1.
+redMultiplier = 1
+
+--- A number value that is multiplied with the green color channel when drawn. By default 1.
+greenMultiplier = 1
+
+--- A number value that is multiplied with the blue color channel when drawn. By default 1.
+blueMultiplier = 1
+
+--- Sets red, green, and blue multipliers based on a hexadecimal RGB value (e.g. 0xFF0000). Write-only.
+colorMultiplier = 0xFFFFFF
+
 --- Whether or not the art layer was destroyed. Calling `destroy` sets this to true. Read-only.
 destroyed = false
 
