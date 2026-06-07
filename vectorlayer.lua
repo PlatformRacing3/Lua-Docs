@@ -35,7 +35,7 @@ blueMultiplier = 1
 --- Sets red, green, and blue multipliers based on a hexadecimal RGB value (e.g. 0xFF0000). Write-only.
 colorMultiplier = 0xFFFFFF
 
---- Adds a display object to the layer's child list. Any 
+--- Adds a display object to the layer's child list. This allows it to appear on screen.
 --- @tparam sprite/stamp/textfield child The display object to be parented.
 --- @tparam int index The index position to add the child into. By default the end of the list.
 function addChild(child, index)
