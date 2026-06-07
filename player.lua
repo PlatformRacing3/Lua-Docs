@@ -25,6 +25,19 @@ tick = nil
 --- @see eventlistener
 keyEvent = nil
 
+--- The event handler for mouse events, which fire when the left mouse button is pressed or released.
+--- event.buttonDown indicates whether it is a press or release.
+--- event.clickCount indicates whether a click is part of a multiple-click sequence (e.g a double click).
+--- event.mouseX and event.mouseY follow the same conventions as player.mousex and player.mousey
+--- @usage player.keyEvent.addListener(function(evt) -- chat out all event data for a keyEvent
+----   player.chat("buttonDown: " .. tostring(evt.buttonDown))
+----   player.chat("clickCount: " .. evt.clickCount)
+----   player.chat("mouseX: " .. evt.mouseX) -- Follows player.mousex and player.mousey conventions
+----   player.chat("mouseY: " .. evt.mouseY)
+---- end)
+--- @see eventlistener
+mouseEvent = nil
+
 --- Player's current health. The player is killed if it goes to zero or below.
 health = 5
 
@@ -55,6 +68,9 @@ gravity = 1
 
 --- Affects how far can you see (zoom). Greater values decrease your view size.
 fov = 1
+
+--- The actual FOV after accounting for all effects. Read-only.
+effectiveFOV
 
 --- Player's current horizontal velocity. Ranges from -1 to 1.
 xvelocity = 0
@@ -238,6 +254,20 @@ end
 --- @usage player.chat('hello', 0x1D5497)
 --- @usage player.chat('hello', 1922199)
 function chat(message, color)
+end
+
+
+--- Sends an alert popup to the player. The popup has a text box that the player can use for input.
+--- @tparam string message The event data to send.
+--- @tparam function callback The function called when the player closes the popup.
+--- @usage  player.prompt("Enter a string", function(str, err)
+----   if err then 
+----     player.alert("Error: " .. err) -- this basically just indicates that alerts are disabled.
+----   else
+----     player.alert("Your string was \"" .. str .. "\".")
+----   end
+---- end)
+function prompt(message, callback)
 end
 
 --- Teleports the player to the latest 'safe' block.
