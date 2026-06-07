@@ -130,3 +130,19 @@ end
 --- Destroys all Lua-created text fields. Does not undraw any text fields already rendered to any existing art layers or stamps.
 function destroyAllTextFields()
 end
+
+--- Creates a (client-sided) `vectorlayer`, which can have display objects added to it. This function fails and returns nil if the player has backgrounds disabled in their settings.
+--- @tparam float depth The depth of the vector layer. By default 1.
+--- @tparam int layerNum The layerNum of the vector layer (equivalent to the ">" icon in Level Editor). By default 1. Greater layerNum layers are drawn above lesser layerNum layers, regardless of layer depth. layerNums of 2 or greater draw above blocks. 3 or greater draws above players, hats, projectiles, and other visual effects.
+--- @treturn vectorlayer The new vector layer, or nil if the player has backgrounds disabled in their settings.
+--- @see vectorlayer
+--- @usage local layer = game.level.newVectorLayer(1, 3)
+---- if layer then
+----     layer.addChild(someStamp)
+---- end
+function newVectorLayer(depth, layerNum)
+end
+
+--- Destroys all Lua-created vector layers.
+function destroyAllVectorLayers()
+end
