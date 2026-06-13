@@ -35,7 +35,10 @@ end
 --- @tparam string The tag to search for.
 --- @tparam boolean Whether the tag needs to match exactly. True by default.
 --- @return An AS3 array of all blocks with the given tag.
---- 
+--- @usage local blocks = game.level.getBlocksWithTag("start", false)
+---- for i, v in ipairs(blocks) do
+----   someTable[i + 1] = v
+---- end
 function getBlocksWithTag(tag, isExact)
 end
 
