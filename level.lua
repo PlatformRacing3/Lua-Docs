@@ -22,12 +22,21 @@ end
 
 --- Gets a list of all blocks existing in the level.
 --- @return An AS3 array of all blocks in the level.
---- @see @{utils.totable|totable}
 --- @usage local blocks = totable(game.level.getAllBlocks()) 
 ---- for i, v in pairs(blocks) do
 ----     v.setmetadata("index", i)
 ---- end
 function getAllBlocks()
+end
+
+--- Gets a list of all blocks with a given tag.
+--- By default, only returns blocks with a tag that exactly matches the given tag.
+--- If isExact is false, then this function returns all blocks with a tag that contains the given tag.
+--- @tparam string The tag to search for.
+--- @tparam boolean Whether the tag needs to match exactly. True by default.
+--- @return An AS3 array of all blocks with the given tag.
+--- 
+function getBlocksWithTag(tag, isExact)
 end
 
 --- Given the coordinates of two blocks, turn all blocks in the level of each type into the other.
