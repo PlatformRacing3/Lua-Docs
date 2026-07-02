@@ -13,9 +13,6 @@ scaleX = 1.0
 --- The vertical scale of the sprite when it is the child of another sprite. By default 1.
 scaleY = 1.0
 
---- The vertical scale of the sprite when it is the child of another sprite. By default 1.
-scaleY = 1.0
-
 --- The rotation of the sprite, in degrees, when it is the child of another sprite. By default 0.
 rotation = 0
 
