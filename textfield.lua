@@ -13,9 +13,6 @@ scaleX = 1.0
 --- The vertical scale of the text field when it is the child of a sprite. By default 1.
 scaleY = 1.0
 
---- The vertical scale of the text field when it is the child of a sprite. By default 1.
-scaleY = 1.0
-
 --- The rotation of the text field, in degrees, when it is the child of a sprite. By default 0.
 rotation = 0
 
