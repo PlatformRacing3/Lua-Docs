@@ -29,7 +29,7 @@ keyEvent = nil
 --- event.buttonDown indicates whether it is a press or release.
 --- event.clickCount indicates whether a click is part of a multiple-click sequence (e.g a double click).
 --- event.mouseX and event.mouseY follow the same conventions as player.mousex and player.mousey
---- @usage player.keyEvent.addListener(function(evt) -- chat out all event data for a keyEvent
+--- @usage player.mouseEvent.addListener(function(evt) -- chat out all event data for a keyEvent
 ----   player.chat("buttonDown: " .. tostring(evt.buttonDown))
 ----   player.chat("clickCount: " .. evt.clickCount)
 ----   player.chat("mouseX: " .. evt.mouseX) -- Follows player.mousex and player.mousey conventions
@@ -70,7 +70,7 @@ gravity = 1
 fov = 1
 
 --- The actual FOV after accounting for all effects. Read-only.
-effectiveFOV
+effectiveFOV = 1.0
 
 --- Player's current horizontal velocity. Ranges from -1 to 1.
 xvelocity = 0
