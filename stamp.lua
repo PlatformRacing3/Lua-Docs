@@ -23,9 +23,6 @@ scaleX = 1.0
 --- The vertical scale of the stamp when it is the child of a sprite. By default 1.
 scaleY = 1.0
 
---- The vertical scale of the stamp when it is the child of a sprite. By default 1.
-scaleY = 1.0
-
 --- The rotation of the stamp, in degrees, when it is the child of a sprite. By default 0.
 rotation = 0
 
